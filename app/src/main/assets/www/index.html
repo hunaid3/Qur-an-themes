@@ -1,0 +1,691 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Qur'an Themes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=IBM+Plex+Sans:wght@400;500;600&family=Marcellus&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a single reading column (max 46rem) under a sticky band; pillars on the home view, theme pages built from passage cards like illuminated mushaf panels. */
+:root{
+  --paper:#F3F5F2; --surface:#FFFFFF; --sunk:#E9EDEA; --ink:#18202D; --muted:#576072; --line:#D6DCDD;
+  --lapis:#24418C; --lapis-ink:#FFFFFF; --lapis-soft:#E4EAF6; --gold:#8F6A17; --gold-soft:#F3E8CC;
+  --ok:#2C7049; --ok-soft:#DFEFE5; --warn:#9E4E16; --warn-soft:#F6E3D3;
+  --f-display:"Marcellus", "Palatino Linotype", Palatino, Georgia, serif;
+  --f-body:"Spectral", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --f-ui:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-ar:"Amiri Quran", "Amiri", "Scheherazade New", "Traditional Arabic", "Geeza Pro", serif;
+  --ar-scale:1;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0E131D; --surface:#151C29; --sunk:#1B2333; --ink:#E6E9EF; --muted:#9BA4B5; --line:#2A3345;
+  --lapis:#9FB4F0; --lapis-ink:#0E131D; --lapis-soft:#1C2848; --gold:#D9B45F; --gold-soft:#2C2614;
+  --ok:#7FCB9D; --ok-soft:#14301F; --warn:#EBA36D; --warn-soft:#382416; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#0E131D; --surface:#151C29; --sunk:#1B2333; --ink:#E6E9EF; --muted:#9BA4B5; --line:#2A3345;
+  --lapis:#9FB4F0; --lapis-ink:#0E131D; --lapis-soft:#1C2848; --gold:#D9B45F; --gold-soft:#2C2614;
+  --ok:#7FCB9D; --ok-soft:#14301F; --warn:#EBA36D; --warn-soft:#382416; color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--f-body);-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lapis);outline-offset:2px;border-radius:4px}
+h1,h2,h3{text-wrap:balance;font-weight:400}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-in{max-width:48rem;margin:0 auto;display:flex;align-items:center;gap:.5rem;min-height:3.25rem;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar-title{flex:1;min-width:0;font:500 .9375rem/1.2 var(--f-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-title b{font-family:var(--f-display);font-weight:400;font-size:1.125rem;letter-spacing:.01em}
+.ib{display:inline-grid;place-items:center;width:2.5rem;height:2.5rem;border:0;background:transparent;border-radius:999px;cursor:pointer;color:var(--ink)}
+.ib:hover{background:var(--sunk)}
+.ib svg{width:1.3rem;height:1.3rem}
+
+.wrap{max-width:48rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:1.25rem 4rem}
+.stack{display:flex;flex-direction:column;gap:1rem}
+
+.eyebrow{font:600 .75rem/1.3 var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mast h1{font:400 clamp(2.1rem,7vw,3rem)/1.05 var(--f-display);margin:.25rem 0 .5rem;letter-spacing:.005em}
+.mast p{margin:0;color:var(--muted);max-width:38rem}
+.nums{font:500 .875rem/1.4 var(--f-ui);color:var(--muted);font-variant-numeric:tabular-nums}
+.nums b{color:var(--ink);font-weight:600}
+
+.notice{display:flex;gap:.75rem;align-items:flex-start;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 35%,transparent);border-radius:10px;padding:.75rem .9rem;font:400 .875rem/1.45 var(--f-ui)}
+.notice b{font-weight:600}
+
+.search{display:flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 .75rem}
+.search svg{width:1.1rem;height:1.1rem;color:var(--muted);flex:none}
+.search input{flex:1;min-width:0;border:0;background:transparent;font:400 1rem/1 var(--f-ui);padding:.85rem 0;color:var(--ink);outline:none}
+.search:focus-within{border-color:var(--lapis)}
+
+.pill{display:inline-flex;align-items:center;gap:.35rem;font:600 .6875rem/1 var(--f-ui);letter-spacing:.06em;text-transform:uppercase;padding:.35rem .55rem;border-radius:999px;white-space:nowrap}
+.p-draft{background:var(--sunk);color:var(--muted)}
+.p-partial{background:var(--gold-soft);color:var(--gold)}
+.p-ok{background:var(--ok-soft);color:var(--ok)}
+.p-warn{background:var(--warn-soft);color:var(--warn)}
+.dot{width:.5rem;height:.5rem;border-radius:50%;background:currentColor;display:inline-block}
+
+.pillar{border-top:1px solid var(--line);padding-top:1rem;display:grid;gap:.6rem}
+.pillar-h{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.pid{font:600 .75rem/1 var(--f-ui);letter-spacing:.08em;color:var(--lapis);background:var(--lapis-soft);padding:.3rem .45rem;border-radius:6px}
+.pillar-h h2{margin:0;font:400 1.375rem/1.2 var(--f-display);flex:1;min-width:12rem}
+.pillar-h button{border:0;background:none;padding:0;cursor:pointer;text-align:left}
+.tlinks{display:flex;flex-wrap:wrap;gap:.4rem}
+.tl{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.35rem .7rem;font:400 .875rem/1.25 var(--f-ui);cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;text-align:left}
+.tl:hover{border-color:var(--lapis);color:var(--lapis)}
+.tl .dot{width:.4rem;height:.4rem}
+.st-ok{color:var(--ok)} .st-partial{color:var(--gold)} .st-draft{color:var(--line)} .st-warn{color:var(--warn)}
+
+.tlist{display:grid;gap:.6rem}
+.trow{display:grid;grid-template-columns:auto 1fr;gap:.25rem .75rem;padding:.9rem 1rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;cursor:pointer;text-align:left;width:100%}
+.trow:hover{border-color:var(--lapis)}
+.trow .tid{grid-row:span 3;font:600 .75rem/1.6 var(--f-ui);color:var(--lapis);letter-spacing:.05em}
+.trow h3{margin:0;font:400 1.2rem/1.25 var(--f-display);min-width:0}
+.trow p{margin:0;color:var(--muted);font-size:.9375rem;min-width:0}
+.trow .meta{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+
+.th-head{display:grid;gap:.6rem}
+.th-head h1{margin:0;font:400 clamp(1.9rem,6vw,2.6rem)/1.1 var(--f-display)}
+.hook{font-style:italic;color:var(--muted);margin:0;font-size:1.0625rem}
+.metarow{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.toc{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.25rem;scrollbar-width:thin}
+.toc button{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:.4rem .65rem;font:500 .8125rem/1.2 var(--f-ui);cursor:pointer;white-space:nowrap}
+.toc button:hover{border-color:var(--lapis);color:var(--lapis)}
+
+.sec{display:grid;gap:.75rem;scroll-margin-top:4.5rem}
+.sec>h2{margin:0;font:400 1.5rem/1.2 var(--f-display);display:flex;align-items:baseline;gap:.6rem}
+.sec>h2 small{font:500 .8125rem/1 var(--f-ui);color:var(--muted)}
+.prose p{margin:0 0 .85rem;max-width:40rem}
+.prose p:last-child{margin-bottom:0}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:.35rem .6rem;font:500 .8125rem/1.2 var(--f-ui);cursor:pointer;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--lapis);color:var(--lapis)}
+.lessons{margin:0;padding-left:1.25rem;display:grid;gap:.4rem}
+
+.pc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem;display:grid;gap:.75rem;scroll-margin-top:4.5rem;min-width:0}
+.pc.hl{border-color:var(--lapis);box-shadow:0 0 0 3px var(--lapis-soft)}
+.lens{margin:0;font-weight:600;font-size:1rem;line-height:1.45}
+.refrow{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;font:500 .8125rem/1.2 var(--f-ui);color:var(--muted)}
+.ref{border:0;background:var(--lapis-soft);color:var(--lapis);font:600 .8125rem/1 var(--f-ui);padding:.4rem .55rem;border-radius:6px;cursor:pointer;font-variant-numeric:tabular-nums}
+.tag{font:500 .75rem/1 var(--f-ui);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:.25rem .4rem}
+.badge-ed{font:600 .6875rem/1 var(--f-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--ok);background:var(--ok-soft);padding:.3rem .45rem;border-radius:5px}
+
+.ayat{direction:rtl;text-align:right;font:400 calc(1.65rem * var(--ar-scale))/2.15 var(--f-ar);color:var(--ink);padding:.5rem .75rem;background:var(--sunk);border-radius:10px;overflow-wrap:anywhere}
+.ayat .n{color:var(--gold);font-size:.8em;padding:0 .15em;white-space:nowrap}
+.trs{display:grid;gap:.45rem}
+.tr{margin:0;display:grid;grid-template-columns:2.2rem 1fr;gap:.25rem;min-width:0}
+.tr .vn{font:600 .75rem/1.9 var(--f-ui);color:var(--gold);font-variant-numeric:tabular-nums}
+.tr .t{min-width:0}
+.tr .src{display:block;font:500 .6875rem/1.3 var(--f-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+.tr + .tr.alt{margin-top:-.2rem}
+.more{justify-self:start;border:1px dashed var(--line);background:transparent;border-radius:8px;padding:.45rem .7rem;font:500 .8125rem/1.2 var(--f-ui);color:var(--lapis);cursor:pointer}
+
+.ed{border-left:3px solid var(--ok);background:var(--ok-soft);border-radius:0 10px 10px 0;padding:.75rem .9rem;display:grid;gap:.5rem;font-size:.9688rem}
+.ed h4{margin:0;font:600 .75rem/1.2 var(--f-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--ok)}
+.ed p{margin:0}
+.ed .lbl{font:600 .75rem/1.2 var(--f-ui);color:var(--ink);letter-spacing:.03em}
+
+details.tf{border-top:1px solid var(--line);padding-top:.6rem}
+details.tf>summary{cursor:pointer;font:500 .875rem/1.3 var(--f-ui);color:var(--ink);list-style:none;display:flex;align-items:center;gap:.5rem}
+details.tf>summary::-webkit-details-marker{display:none}
+details.tf>summary::before{content:"";width:.5rem;height:.5rem;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .15s}
+details.tf[open]>summary::before{transform:rotate(45deg)}
+details.tf>summary small{color:var(--muted);font-weight:400}
+.tfbody{padding-top:.6rem;display:grid;gap:.6rem;font-size:.9688rem;min-width:0}
+.tfbody p{margin:0;max-width:40rem}
+.tfbody .ar{direction:rtl;text-align:right;font:400 1.3rem/1.9 var(--f-ar)}
+.tfbody h5{margin:.4rem 0 0;font:600 .875rem/1.3 var(--f-ui)}
+.tfbody .vh{font:600 .75rem/1.2 var(--f-ui);color:var(--gold)}
+.ikbox{display:grid;gap:.6rem;min-width:0}
+
+.rv{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:.6rem;font:500 .8125rem/1.2 var(--f-ui)}
+.rv .lab{color:var(--muted);margin-right:auto}
+.rb{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.4rem .7rem;cursor:pointer;display:inline-flex;gap:.35rem;align-items:center;font:500 .8125rem/1 var(--f-ui)}
+.rb[aria-pressed="true"].ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.rb[aria-pressed="true"].fl{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.note{width:100%;display:grid;gap:.4rem}
+.note textarea{width:100%;min-height:4.5rem;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:400 .9375rem/1.4 var(--f-ui);padding:.5rem .6rem;resize:vertical}
+.note .row{display:flex;gap:.5rem;justify-content:flex-end}
+.savednote{width:100%;margin:0;font:400 .875rem/1.4 var(--f-ui);color:var(--warn);background:var(--warn-soft);border-radius:8px;padding:.45rem .6rem}
+
+.btn{border:1px solid var(--lapis);background:var(--lapis);color:var(--lapis-ink);border-radius:10px;padding:.55rem .9rem;font:600 .875rem/1.2 var(--f-ui);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--lapis)}
+.links{display:flex;flex-wrap:wrap;gap:.5rem}
+
+.res{display:grid;gap:.5rem}
+.ri{display:grid;gap:.2rem;padding:.75rem .9rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;cursor:pointer;text-align:left;width:100%}
+.ri:hover{border-color:var(--lapis)}
+.ri .k{font:600 .75rem/1.2 var(--f-ui);color:var(--lapis);letter-spacing:.04em}
+.ri .x{font-size:.9688rem}
+.ri mark{background:var(--gold-soft);color:inherit;border-radius:3px;padding:0 .1em}
+.empty{color:var(--muted);font:400 .9375rem/1.5 var(--f-ui);padding:1rem 0}
+
+.vnav{display:flex;justify-content:space-between;gap:.5rem}
+.prog{display:grid;gap:.5rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem}
+.prog .bars{height:.45rem;border-radius:999px;background:var(--sunk);overflow:hidden;display:flex}
+.prog .bars i{display:block;height:100%}
+.prog .row{display:flex;gap:1rem;flex-wrap:wrap;font:500 .8125rem/1.3 var(--f-ui);color:var(--muted);font-variant-numeric:tabular-nums;align-items:center}
+.prog .row b{color:var(--ink)}
+
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);padding:0;width:min(30rem,calc(100vw - 32px));max-height:calc(100dvh - 48px)}
+dialog::backdrop{background:rgb(10 14 22 / .45)}
+.dlg{padding:1.1rem 1.2rem 1.3rem;display:grid;gap:1rem;font:400 .9375rem/1.5 var(--f-ui)}
+.dlg h2{margin:0;font:400 1.4rem/1.2 var(--f-display)}
+.dlg fieldset{border:0;padding:0;margin:0;display:grid;gap:.4rem}
+.dlg legend{font:600 .75rem/1.2 var(--f-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.dlg label{display:flex;gap:.5rem;align-items:center;cursor:pointer}
+.dlg input[type=range]{width:100%}
+.dlg .src{font-size:.8125rem;color:var(--muted);display:grid;gap:.35rem}
+.dlg .src p{margin:0}
+.loading{color:var(--muted);font:400 .9375rem/1.5 var(--f-ui);padding:2rem 0}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(1rem + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);font:500 .875rem/1.3 var(--f-ui);padding:.6rem .9rem;border-radius:10px;z-index:20;max-width:calc(100vw - 32px)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (min-width:40rem){ .pc{padding:1.2rem 1.3rem} }
+</style>
+
+<header class="bar"><div class="bar-in">
+  <button class="ib" id="back" aria-label="Back" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div class="bar-title" id="bartitle"><b>Qur'an Themes</b></div>
+  <button class="ib" id="btnSearch" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+  <button class="ib" id="btnSettings" aria-label="Reading settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
+</div></header>
+
+<main class="wrap" id="view"><p class="loading">Loading the themes…</p></main>
+
+<dialog id="settings"><form method="dialog" class="dlg" id="settingsForm">
+  <h2>Reading settings</h2>
+  <fieldset><legend>Translation</legend>
+    <label><input type="radio" name="tr" id="tr-si" value="si"> Sahih International</label>
+    <label><input type="radio" name="tr" id="tr-qa" value="qa"> Ali Quli Qarai</label>
+    <label><input type="radio" name="tr" id="tr-both" value="both"> Both, one under the other</label>
+  </fieldset>
+  <fieldset><legend>Arabic</legend>
+    <label><input type="checkbox" id="showAr"> Show the Arabic text</label>
+    <label><input type="radio" name="script" id="sc-uthmani" value="uthmani"> Uthmani script (mushaf style)</label>
+    <label><input type="radio" name="script" id="sc-simple" value="simple"> Simple script, if the Uthmani text shows broken letters</label>
+    <label for="arSize">Arabic size</label>
+    <input type="range" id="arSize" min="0.8" max="1.6" step="0.1">
+  </fieldset>
+  <div class="src">
+    <p><b>About this content.</b> Theme mappings, lens lines, overviews and lessons are drafts written for review. The verse texts and tafsir are pulled by reference from their sources and are not retyped.</p>
+    <p>Arabic: Uthmani Hafs text (King Fahd Complex), via the fawazahmed0 Quran API. Translations: Sahih International; Ali Quli Qarai. Tafsir: al-Mukhtasar (Tafsir Center for Quranic Studies, English); Ibn Kathir (abridged English), via the spa5k tafsir API.</p>
+    <p>Translation and tafsir licences must be confirmed before any public release.</p>
+  </div>
+  <button class="btn" value="close">Done</button>
+</form></dialog>
+
+<script>
+"use strict";
+const AR_DIGITS = "٠١٢٣٤٥٦٧٨٩";
+const S = {
+  pillars: [], themes: [], byId: {}, surahs: [], reviewed: {}, verseIdx: {},
+  vcache: {}, kcache: {}, stack: [], cur: null,
+  db: null, dbState: "pending", canWrite: true, reviews: {}, tstatus: {},
+  prefs: { tr: "si", ar: true, size: 1, script: "uthmani" }
+};
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const arNum = n => String(n).replace(/\d/g, d => AR_DIGITS[d]);
+const fmt = n => n.toLocaleString("en-US");
+const refStr = ([s, a, b]) => a === b ? `${s}:${a}` : `${s}:${a}–${b}`;
+const refKey = ([s, a, b]) => `${s}:${a}-${b}`;
+const pKey = (tid, refs) => `${tid}~${refs.map(refKey).join("+")}`;
+const sName = n => S.surahs[n - 1] ? S.surahs[n - 1].name : `Surah ${n}`;
+
+function loadPrefs() { try { const p = JSON.parse(localStorage.getItem("qt-prefs") || "null"); if (p) Object.assign(S.prefs, p); } catch (e) {} applyPrefs(); }
+function savePrefs() { try { localStorage.setItem("qt-prefs", JSON.stringify(S.prefs)); } catch (e) {} }
+function applyPrefs() { document.documentElement.style.setProperty("--ar-scale", S.prefs.size); }
+
+async function getJSON(u) { const r = await fetch(u); if (!r.ok) throw new Error(`Could not load ${u} (${r.status})`); return r.json(); }
+function verses(s) { if (!S.vcache[s]) { const p = getJSON(`data/s/${s}.json`).then(arr => { p.__v = arr; return arr; }); p.catch(() => { delete S.vcache[s]; }); S.vcache[s] = p; } return S.vcache[s]; }
+function ikath(s) { return S.kcache[s] || (S.kcache[s] = getJSON(`data/k/${s}.json`)); }
+
+function themeStatus(t) {
+  const d = S.tstatus[t.id];
+  if (d && d.status === "approved") return { cls: "ok", label: "Reviewed" };
+  if (t.status === "draft-contested") return { cls: "warn", label: "Contested topic · Draft" };
+  if (t.status === "review") return { cls: "partial", label: "Partly reviewed" };
+  return { cls: "draft", label: "Draft" };
+}
+function themeProgress(t) {
+  let ok = 0, fl = 0;
+  for (const st of t.subs) for (const p of st.p) {
+    const r = S.reviews[pKey(t.id, p.r)];
+    if (r && r.status === "ok") ok++; else if (r && r.status === "flag") fl++;
+  }
+  return { ok, fl, n: t.np };
+}
+
+/* ---------- navigation ---------- */
+function go(view, push = true) {
+  if (push && S.cur) S.stack.push(S.cur);
+  S.cur = view;
+  render();
+}
+function back() { const v = S.stack.pop(); if (v) { S.cur = v; render(v.scroll); } else go({ v: "home" }, false); }
+$("#back").addEventListener("click", back);
+$("#btnSearch").addEventListener("click", () => { if (S.cur.v !== "search") go({ v: "search", q: "" }); setTimeout(() => $("#q")?.focus(), 30); });
+$("#btnSettings").addEventListener("click", openSettings);
+
+function setBar(html) { $("#bartitle").innerHTML = html; $("#back").hidden = S.cur.v === "home"; }
+
+async function render(restoreScroll) {
+  const v = S.cur, el = $("#view");
+  try {
+    if (v.v === "home") { setBar("<b>Qur'an Themes</b>"); el.innerHTML = homeHTML(); bindHome(); }
+    else if (v.v === "pillar") { const p = S.pillars.find(x => x.id === v.id); setBar(`<b>${esc(p.title)}</b>`); el.innerHTML = pillarHTML(p); bindTheme(el); }
+    else if (v.v === "search") { setBar("<b>Search</b>"); el.innerHTML = searchHTML(v.q); bindSearch(); }
+    else if (v.v === "flags") { setBar("<b>Your review notes</b>"); el.innerHTML = flagsHTML(); bindTheme(el); }
+    else if (v.v === "theme") {
+      const t = S.byId[v.id]; if (!t) { go({ v: "home" }, false); return; }
+      setBar(`<b>${esc(t.id)}</b> · ${esc(t.title)}`);
+      el.innerHTML = `<p class="loading">Loading ${esc(t.title)}…</p>`;
+      const ss = [...new Set(t.subs.flatMap(st => st.p.flatMap(p => p.r.map(r => r[0]))).concat(t.anchors.map(r => r[0])))];
+      await Promise.all(ss.map(verses));
+      if (S.cur !== v) return;
+      el.innerHTML = await themeHTML(t);
+      bindTheme(el);
+      try { localStorage.setItem("qt-last", t.id); } catch (e) {}
+    }
+    else if (v.v === "verse") {
+      setBar(`<b>${esc(sName(v.s))}</b> ${v.s}:${v.a}`);
+      el.innerHTML = `<p class="loading">Loading ${v.s}:${v.a}…</p>`;
+      await verses(v.s);
+      if (S.cur !== v) return;
+      el.innerHTML = await verseHTML(v.s, v.a);
+      bindTheme(el);
+    }
+  } catch (e) {
+    el.innerHTML = `<p class="empty">${esc(e.message)}. Check your connection and reopen this page.</p>`;
+  }
+  if (restoreScroll != null) window.scrollTo(0, restoreScroll);
+  else if (v.focus) { const t = document.getElementById(v.focus); if (t) { t.classList.add("hl"); t.scrollIntoView({ block: "start" }); } }
+  else window.scrollTo(0, 0);
+}
+function remember() { if (S.cur) S.cur.scroll = window.scrollY; }
+
+/* ---------- home ---------- */
+function totals() {
+  const np = S.themes.reduce((a, t) => a + t.np, 0);
+  let ok = 0, fl = 0;
+  for (const r of Object.values(S.reviews)) { if (r.status === "ok") ok++; else if (r.status === "flag") fl++; }
+  return { np, ok, fl, appr: Object.values(S.tstatus).filter(x => x.status === "approved").length };
+}
+function progressHTML() {
+  if (S.dbState !== "on") return "";
+  const T = totals(), w = x => (100 * x / T.np).toFixed(2);
+  return `<section class="prog" aria-label="Review progress" id="progbox">
+    <div class="row"><span class="eyebrow" style="margin-right:auto">Review progress</span><span><b>${fmt(T.ok)}</b> checked</span><span><b>${fmt(T.fl)}</b> flagged</span><span><b>${T.appr}</b> of ${S.themes.length} themes signed off</span></div>
+    <div class="bars"><i style="width:${w(T.ok)}%;background:var(--ok)"></i><i style="width:${w(T.fl)}%;background:var(--warn)"></i></div>
+    ${T.ok + T.fl ? `<div class="row"><button class="btn ghost" data-go="flags">Open your notes and flags</button></div>` : `<div class="row">Open any theme and tap "Looks right" or "Flag" on a passage. Your marks are saved here for the next review pass.</div>`}
+  </section>`;
+}
+function homeHTML() {
+  let last = null; try { last = localStorage.getItem("qt-last"); } catch (e) {}
+  const lt = last && S.byId[last];
+  const nv = 6236, np = S.themes.reduce((a, t) => a + t.np, 0);
+  return `<div class="stack">
+    <section class="mast">
+      <div class="eyebrow">A thematic study of the Qur'an</div>
+      <h1>Qur'an Themes</h1>
+      <p class="nums"><b>${S.themes.length}</b> themes · <b>${S.pillars.length}</b> pillars · <b>${fmt(np)}</b> passages · drawn from all <b>${fmt(nv)}</b> verses</p>
+    </section>
+    <div class="notice" role="note"><span class="pill p-draft"><span class="dot"></span>Draft</span><span>Every theme is an <b>unreviewed draft</b>, except the Luqman passages in Father and son. Verse text and tafsir come from their sources; the theme summaries and lens lines still need scholarly review.</span></div>
+    <label class="search" for="homeq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="homeq" type="search" placeholder="Search themes, topics, or a verse like 31:13" autocomplete="off"></label>
+    ${lt ? `<button class="trow" data-theme="${esc(lt.id)}"><span class="tid">${esc(lt.id)}</span><span class="eyebrow">Continue reading</span><h3>${esc(lt.title)}</h3><p>${esc(lt.hook)}</p></button>` : ""}
+    ${progressHTML()}
+    ${S.pillars.map(p => {
+      const ts = S.themes.filter(t => t.pillar === p.id);
+      return `<section class="pillar">
+        <div class="pillar-h"><span class="pid">${esc(p.id)}</span><h2><button data-pillar="${esc(p.id)}">${esc(p.title)}</button></h2><span class="nums">${ts.length} themes</span></div>
+        <div class="tlinks">${ts.map(t => { const s = themeStatus(t); return `<button class="tl" data-theme="${esc(t.id)}" title="${esc(t.hook)}"><span class="dot st-${s.cls}"></span>${esc(t.title)}</button>`; }).join("")}</div>
+      </section>`;
+    }).join("")}
+  </div>`;
+}
+function bindHome() {
+  const el = $("#view");
+  bindTheme(el);
+  const q = $("#homeq");
+  q.addEventListener("keydown", e => { if (e.key === "Enter") { remember(); go({ v: "search", q: q.value.trim() }); } });
+}
+
+/* ---------- pillar ---------- */
+function themeRow(t) {
+  const s = themeStatus(t), pr = themeProgress(t);
+  return `<button class="trow" data-theme="${esc(t.id)}"><span class="tid">${esc(t.id)}</span><h3>${esc(t.title)}</h3><p>${esc(t.hook)}</p>
+    <span class="meta"><span class="pill p-${s.cls}"><span class="dot"></span>${s.label}</span><span class="nums">${t.np} passages · ${fmt(t.nv)} verses${pr.ok + pr.fl ? ` · ${pr.ok} checked, ${pr.fl} flagged` : ""}</span></span></button>`;
+}
+function pillarHTML(p) {
+  const ts = S.themes.filter(t => t.pillar === p.id);
+  return `<div class="stack"><section class="mast"><div class="eyebrow">Pillar ${esc(p.id)}</div><h1>${esc(p.title)}</h1><p class="nums">${ts.length} themes</p></section>
+    <div class="tlist">${ts.map(themeRow).join("")}</div></div>`;
+}
+
+/* ---------- passages ---------- */
+function verseLines(refs, all) {
+  let n = 0, ar = [], tr = [];
+  const showAr = S.prefs.ar, mode = S.prefs.tr;
+  const out = [];
+  for (const [s, a, b] of refs) {
+    const vs = S.vcache[s].__v;
+    for (let k = a; k <= b; k++) {
+      n++;
+      if (!all && n > 4) continue;
+      const x = vs[k - 1];
+      if (showAr) ar.push(`${esc(S.prefs.script === "simple" ? x[4] : x[0])} <span class="n">﴿${arNum(k)}﴾</span>`);
+      const lab = refs.length > 1 || a !== b ? `${s}:${k}` : `${s}:${k}`;
+      if (mode === "both") {
+        tr.push(`<p class="tr"><span class="vn">${k}</span><span class="t">${esc(x[1])}<span class="src">Sahih International</span></span></p>`);
+        tr.push(`<p class="tr alt"><span class="vn"></span><span class="t">${esc(x[2])}<span class="src">Ali Quli Qarai</span></span></p>`);
+      } else tr.push(`<p class="tr"><span class="vn">${k}</span><span class="t">${esc(mode === "qa" ? x[2] : x[1])}</span></p>`);
+    }
+  }
+  return { ar: ar.join(" "), tr: tr.join(""), n };
+}
+function countVerses(refs) { return refs.reduce((a, [s, x, y]) => a + y - x + 1, 0); }
+function edBlock(tid, refs) {
+  const parts = [];
+  for (const [s, a, b] of refs) for (let k = a; k <= b; k++) {
+    const r = S.reviewed[`${tid}|${s}:${k}`];
+    if (!r) continue;
+    const sec = (lab, arr) => arr && arr.length ? `<div><div class="lbl">${lab}</div>${arr.map(x => `<p>${esc(x)}</p>`).join("")}</div>` : "";
+    parts.push(`${refs.length > 1 || a !== b ? `<div class="lbl">${s}:${k}</div>` : ""}${sec("Tafsir", r.tafsir)}${sec("Scholarly insight", r.insight)}${sec("Occasion of revelation", r.context)}${sec("Sahih hadith", r.hadith)}${sec("Key words", r.keywords)}`);
+  }
+  return parts.length ? `<div class="ed"><h4>Editor-reviewed notes</h4>${parts.join("")}</div>` : "";
+}
+function isEdited(tid, refs) { for (const [s, a, b] of refs) for (let k = a; k <= b; k++) if (S.reviewed[`${tid}|${s}:${k}`]) return true; return false; }
+function reviewHTML(key) {
+  if (S.dbState !== "on" || key.startsWith("VERSE~")) return "";
+  const r = S.reviews[key] || {};
+  const ro = !S.canWrite;
+  return `<div class="rv" data-key="${esc(key)}">
+    <span class="lab">${r.status === "ok" ? "You marked this as right" : r.status === "flag" ? "Flagged for review" : "Your review"}</span>
+    <button class="rb ok" data-act="ok" aria-pressed="${r.status === "ok"}" ${ro ? "disabled" : ""}>✓ Looks right</button>
+    <button class="rb fl" data-act="flag" aria-pressed="${r.status === "flag"}" ${ro ? "disabled" : ""}>⚑ Flag</button>
+    ${r.note ? `<p class="savednote">${esc(r.note)}</p>` : ""}
+  </div>`;
+}
+function passageHTML(t, p, id) {
+  const all = countVerses(p.r) <= 6;
+  const L = verseLines(p.r, all);
+  const tot = countVerses(p.r);
+  const refsHtml = p.r.map(r => `<button class="ref" data-verse="${r[0]}:${r[1]}">${esc(sName(r[0]))} ${refStr(r)}</button><span class="tag">${S.surahs[r[0] - 1].rev}</span>`).join("");
+  return `<article class="pc" id="${id}" data-tid="${esc(t.id)}" data-refs='${JSON.stringify(p.r)}'>
+    <p class="lens">${esc(p.l)}</p>
+    <div class="refrow">${refsHtml}${isEdited(t.id, p.r) ? `<span class="badge-ed">Editor reviewed</span>` : ""}</div>
+    <div class="vbody">${L.ar ? `<div class="ayat" lang="ar">${L.ar}</div>` : ""}<div class="trs">${L.tr}</div></div>
+    ${!all ? `<button class="more" data-allv>Show all ${tot} verses</button>` : ""}
+    ${edBlock(t.id, p.r)}
+    <details class="tf" data-tf="mk"><summary>Concise tafsir <small>al-Mukhtasar</small></summary><div class="tfbody"></div></details>
+    <details class="tf" data-tf="ik"><summary>Classical tafsir <small>Ibn Kathir</small></summary><div class="tfbody"></div></details>
+    ${reviewHTML(pKey(t.id, p.r))}
+  </article>`;
+}
+async function fillTafsir(det) {
+  const art = det.closest("[data-refs]"), refs = JSON.parse(art.dataset.refs), body = det.querySelector(".tfbody");
+  if (body.dataset.done) return; body.dataset.done = 1;
+  if (det.dataset.tf === "mk") {
+    body.innerHTML = refs.map(([s, a, b]) => { const vs = S.vcache[s].__v; let h = ""; for (let k = a; k <= b; k++) h += `<div><div class="vh">${s}:${k}</div><p>${esc(vs[k - 1][3])}</p></div>`; return h; }).join("");
+    return;
+  }
+  body.innerHTML = `<p class="empty">Loading Ibn Kathir…</p>`;
+  try {
+    const parts = [];
+    for (const [s, a, b] of refs) {
+      const secs = await ikath(s);
+      for (const [x, y, txt] of secs) if (y >= a && x <= b) parts.push({ s, x, y, txt });
+    }
+    body.innerHTML = parts.length ? parts.map(pt => `<div class="vh">Ibn Kathir on ${pt.s}:${pt.x}${pt.y !== pt.x ? "–" + pt.y : ""}</div><div class="ikbox">${ikParas(pt.txt)}</div>`).join("") + `<p class="empty">Classical source text, shown in full. It has not yet been filtered under the app's content rules.</p>`
+      : `<p class="empty">No Ibn Kathir section covers these verses in the source.</p>`;
+  } catch (e) { body.innerHTML = `<p class="empty">${esc(e.message)}</p>`; delete body.dataset.done; }
+}
+function ikParas(txt) {
+  return txt.split(/\n{2,}/).map(p => p.trim()).filter(Boolean).map(p => {
+    const arc = (p.match(/[؀-ۿ]/g) || []).length;
+    if (arc > p.length * 0.4) return `<p class="ar" lang="ar">${esc(p)}</p>`;
+    if (p.length < 80 && !/[.:;,)"?!]$/.test(p)) return `<h5>${esc(p)}</h5>`;
+    return `<p>${esc(p)}</p>`;
+  }).join("");
+}
+
+/* ---------- theme ---------- */
+async function themeHTML(t) {
+  const s = themeStatus(t), pr = themeProgress(t);
+  const pil = S.pillars.find(p => p.id === t.pillar);
+  let pi = 0;
+  const signed = S.tstatus[t.id] && S.tstatus[t.id].status === "approved";
+  return `<div class="stack">
+    <section class="th-head">
+      <div class="eyebrow">${esc(t.id)} · ${esc(pil ? pil.title : "")}</div>
+      <h1>${esc(t.title)}</h1>
+      <p class="hook">${esc(t.hook)}</p>
+      <div class="metarow"><span class="pill p-${s.cls}"><span class="dot"></span>${s.label}</span>
+        <span class="nums"><b>${t.np}</b> passages · <b>${fmt(t.nv)}</b> verses${S.dbState === "on" ? ` · <b>${pr.ok}</b> checked · <b>${pr.fl}</b> flagged` : ""}</span></div>
+      ${S.dbState === "on" && S.canWrite ? `<div><button class="btn ${signed ? "ghost" : ""}" data-signoff="${esc(t.id)}">${signed ? "Undo sign-off" : "Sign off this theme"}</button></div>` : ""}
+      <nav class="toc" aria-label="On this page">
+        <button data-jump="sec-ov">Overview</button>${t.subs.map((st, i) => `<button data-jump="sec-${i}">${esc(st.t)}</button>`).join("")}<button data-jump="sec-ls">Lessons</button>${t.links.length ? `<button data-jump="sec-ln">Connections</button>` : ""}
+      </nav>
+    </section>
+    <section class="sec" id="sec-ov"><h2>Overview</h2><div class="prose">${t.overview.map(p => `<p>${esc(p)}</p>`).join("")}</div>
+      ${t.anchors.length ? `<div><div class="eyebrow" style="margin-bottom:.4rem">Anchor verses</div><div class="chips">${t.anchors.map(r => `<button class="chip" data-verse="${r[0]}:${r[1]}">${esc(sName(r[0]))} ${refStr(r)}</button>`).join("")}</div></div>` : ""}
+    </section>
+    ${t.subs.map((st, i) => `<section class="sec" id="sec-${i}"><h2>${esc(st.t)} <small>${st.p.length} ${st.p.length === 1 ? "passage" : "passages"}</small></h2>
+      ${st.p.map(p => passageHTML(t, p, `p-${i}-${st.p.indexOf(p)}`)).join("")}</section>`).join("")}
+    <section class="sec" id="sec-ls"><h2>Lessons</h2><ol class="lessons">${t.lessons.map(l => `<li>${esc(l)}</li>`).join("")}</ol></section>
+    ${t.links.length ? `<section class="sec" id="sec-ln"><h2>Connections</h2><div class="links">${t.links.map(id => S.byId[id] ? `<button class="tl" data-theme="${esc(id)}"><span class="dot st-${themeStatus(S.byId[id]).cls}"></span>${esc(id)} · ${esc(S.byId[id].title)}</button>` : "").join("")}</div></section>` : ""}
+    <p class="nums">Sources: Arabic Uthmani Hafs text; Sahih International and Ali Quli Qarai translations; al-Mukhtasar and Ibn Kathir (English). Theme mapping and summaries: draft for scholarly review.</p>
+  </div>`;
+}
+
+/* ---------- verse ---------- */
+async function verseHTML(s, a) {
+  const sur = S.surahs[s - 1], max = sur.ayahs;
+  const p = { r: [[s, a, a]], l: "" };
+  const t = { id: "VERSE" };
+  const uses = S.verseIdx[`${s}:${a}`] || [];
+  return `<div class="stack">
+    <section class="th-head"><div class="eyebrow">${esc(sur.name)} · ${esc(sur.en)} · ${sur.rev}</div><h1>${s}:${a}</h1></section>
+    ${passageHTML(t, p, "verse-card").replace('<p class="lens"></p>', "")}
+    <div class="vnav">${a > 1 ? `<button class="btn ghost" data-verse="${s}:${a - 1}" data-replace>← ${s}:${a - 1}</button>` : "<span></span>"}${a < max ? `<button class="btn ghost" data-verse="${s}:${a + 1}" data-replace>${s}:${a + 1} →</button>` : ""}</div>
+    <section class="sec"><h2>Themes that cite this verse <small>${uses.length}</small></h2>
+      ${uses.length ? `<div class="res">${uses.map(u => { const th = S.byId[u.tid]; return `<button class="ri" data-theme="${esc(u.tid)}" data-focus="p-${u.si}-${u.pi}"><span class="k">${esc(u.tid)} · ${esc(th.title)} · ${esc(th.subs[u.si].t)}</span><span class="x">${esc(th.subs[u.si].p[u.pi].l)}</span></button>`; }).join("")}</div>` : `<p class="empty">No theme cites this verse yet.</p>`}
+    </section></div>`;
+}
+
+/* ---------- search ---------- */
+function searchHTML(q) {
+  return `<div class="stack">
+    <label class="search" for="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" value="${esc(q)}" placeholder="Search themes, topics, or a verse like 31:13" autocomplete="off"></label>
+    <div id="results">${resultsHTML(q)}</div></div>`;
+}
+function hl(text, terms) {
+  let h = esc(text);
+  for (const w of terms) if (w.length > 1) h = h.replace(new RegExp(`(${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "ig"), "<mark>$1</mark>");
+  return h;
+}
+function resultsHTML(q) {
+  q = (q || "").trim();
+  if (!q) return `<p class="empty">Try "dog", "patience", "Musa", "orphans", "inheritance" or a verse such as 2:255.</p>`;
+  const out = [];
+  const m = q.match(/^(\d{1,3})\s*[:.]\s*(\d{1,3})$/);
+  if (m) {
+    const s = +m[1], a = +m[2];
+    if (S.surahs[s - 1] && a >= 1 && a <= S.surahs[s - 1].ayahs) out.push(`<button class="ri" data-verse="${s}:${a}"><span class="k">Verse</span><span class="x">Open ${esc(sName(s))} ${s}:${a}</span></button>`);
+  }
+  const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+  const hit = s => { const l = s.toLowerCase(); return terms.every(w => l.includes(w)); };
+  const th = [], sub = [], pas = [];
+  for (const t of S.themes) {
+    if (hit(t.title + " " + t.hook + " " + t.id)) th.push(t);
+    t.subs.forEach((st, si) => {
+      if (hit(st.t)) sub.push({ t, st, si });
+      st.p.forEach((p, pi) => { if (hit(p.l)) pas.push({ t, st, si, pi, p }); });
+    });
+  }
+  if (th.length) out.push(`<div class="eyebrow">Themes · ${th.length}</div>` + th.map(t => `<button class="ri" data-theme="${esc(t.id)}"><span class="k">${esc(t.id)}</span><span class="x">${hl(t.title, terms)}: ${hl(t.hook, terms)}</span></button>`).join(""));
+  if (sub.length) out.push(`<div class="eyebrow">Sub-topics · ${sub.length}</div>` + sub.slice(0, 40).map(x => `<button class="ri" data-theme="${esc(x.t.id)}" data-focus="sec-${x.si}"><span class="k">${esc(x.t.id)} · ${esc(x.t.title)}</span><span class="x">${hl(x.st.t, terms)}</span></button>`).join(""));
+  if (pas.length) out.push(`<div class="eyebrow">Passages · ${pas.length}${pas.length > 80 ? ", first 80 shown" : ""}</div>` + pas.slice(0, 80).map(x => `<button class="ri" data-theme="${esc(x.t.id)}" data-focus="p-${x.si}-${x.pi}"><span class="k">${esc(x.t.id)} · ${esc(x.st.t)} · ${x.p.r.map(refStr).join(", ")}</span><span class="x">${hl(x.p.l, terms)}</span></button>`).join(""));
+  return out.length ? `<div class="res">${out.join("")}</div>` : `<p class="empty">Nothing matches "${esc(q)}". Try a shorter word, or a verse reference like 18:18.</p>`;
+}
+function bindSearch() {
+  const q = $("#q"), r = $("#results");
+  let tm;
+  q.addEventListener("input", () => { clearTimeout(tm); tm = setTimeout(() => { S.cur.q = q.value; r.innerHTML = resultsHTML(q.value); }, 120); });
+  bindTheme($("#view"));
+  if (!q.value) q.focus();
+}
+
+/* ---------- review list ---------- */
+function flagsHTML() {
+  const items = Object.entries(S.reviews).map(([k, r]) => ({ k, ...r })).sort((a, b) => (b.status === "flag") - (a.status === "flag") || (b.at || 0) - (a.at || 0));
+  if (!items.length) return `<p class="empty">You haven't marked any passages yet.</p>`;
+  const row = it => {
+    const [tid, rs] = it.k.split("~"); const t = S.byId[tid];
+    if (!t) return "";
+    let loc = null;
+    t.subs.forEach((st, si) => st.p.forEach((p, pi) => { if (pKey(tid, p.r) === it.k) loc = { si, pi, p, st }; }));
+    if (!loc) return "";
+    return `<button class="ri" data-theme="${esc(tid)}" data-focus="p-${loc.si}-${loc.pi}"><span class="k">${it.status === "flag" ? "⚑ Flagged" : "✓ Checked"} · ${esc(tid)} · ${loc.p.r.map(refStr).join(", ")}</span><span class="x">${esc(loc.p.l)}</span>${it.note ? `<span class="x" style="color:var(--warn)">${esc(it.note)}</span>` : ""}</button>`;
+  };
+  const fl = items.filter(i => i.status === "flag"), ok = items.filter(i => i.status === "ok");
+  return `<div class="stack"><section class="mast"><h1>Your review notes</h1><p class="nums"><b>${fl.length}</b> flagged · <b>${ok.length}</b> checked</p></section>
+    ${fl.length ? `<div class="res"><div class="eyebrow">Flagged</div>${fl.map(row).join("")}</div>` : ""}
+    ${ok.length ? `<div class="res"><div class="eyebrow">Checked</div>${ok.map(row).join("")}</div>` : ""}</div>`;
+}
+
+/* ---------- shared bindings ---------- */
+function bindTheme(root) {
+  root.onclick = async e => {
+    const b = e.target.closest("button, summary");
+    if (!b) return;
+    if (b.dataset.theme) { remember(); go({ v: "theme", id: b.dataset.theme, focus: b.dataset.focus }); return; }
+    if (b.dataset.pillar) { remember(); go({ v: "pillar", id: b.dataset.pillar }); return; }
+    if (b.dataset.go === "flags") { remember(); go({ v: "flags" }); return; }
+    if (b.dataset.verse) { const [s, a] = b.dataset.verse.split(":").map(Number); if (b.hasAttribute("data-replace")) { S.cur = { v: "verse", s, a }; render(); } else { remember(); go({ v: "verse", s, a }); } return; }
+    if (b.dataset.jump) { document.getElementById(b.dataset.jump)?.scrollIntoView({ block: "start" }); return; }
+    if (b.hasAttribute("data-allv")) {
+      const art = b.closest("[data-refs]"), refs = JSON.parse(art.dataset.refs), L = verseLines(refs, true);
+      art.querySelector(".vbody").innerHTML = `${L.ar ? `<div class="ayat" lang="ar">${L.ar}</div>` : ""}<div class="trs">${L.tr}</div>`;
+      b.remove(); return;
+    }
+    if (b.dataset.signoff) { signOff(b.dataset.signoff); return; }
+    if (b.dataset.act) { reviewAct(b); return; }
+    if (b.dataset.save !== undefined) { saveNote(b); return; }
+    if (b.dataset.cancel !== undefined) { const rv = b.closest(".rv"); rv.outerHTML = reviewHTML(rv.dataset.key); return; }
+  };
+  root.querySelectorAll("details.tf").forEach(d => d.addEventListener("toggle", () => { if (d.open) fillTafsir(d); }));
+}
+
+/* ---------- review writes ---------- */
+function toast(msg) { const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), 2600); }
+async function writeReview(key, data) {
+  if (!S.db) return;
+  const ref = S.db.doc(`reviews/${key}`);
+  try { if (data === null) await ref.delete(); else await ref.set(data); }
+  catch (e) {
+    if (e && e.code === "invalid_argument") { S.canWrite = false; toast("You can read this app but not save reviews on it."); }
+    else toast("Couldn't save. Check your connection and try again.");
+  }
+}
+function reviewAct(b) {
+  const rv = b.closest(".rv"), key = rv.dataset.key, cur = S.reviews[key] || {};
+  const [tid] = key.split("~");
+  if (b.dataset.act === "ok") {
+    const next = cur.status === "ok" ? null : { theme: tid, status: "ok", note: "", at: Date.now() };
+    S.reviews[key] = next || undefined; if (!next) delete S.reviews[key];
+    rv.outerHTML = reviewHTML(key); writeReview(key, next); toast(next ? "Marked as right" : "Mark removed"); return;
+  }
+  if (cur.status === "flag" && !rv.querySelector(".note")) {
+    rv.insertAdjacentHTML("beforeend", noteForm(cur.note || "", true)); return;
+  }
+  if (!rv.querySelector(".note")) rv.insertAdjacentHTML("beforeend", noteForm(cur.note || "", false));
+  rv.querySelector("textarea").focus();
+}
+function noteForm(v, canClear) {
+  const id = "n" + Math.random().toString(36).slice(2, 8);
+  return `<div class="note"><label class="eyebrow" for="${id}">What needs checking?</label><textarea id="${id}" placeholder="e.g. wrong verse range, lens misses the point, check against al-Mizan">${esc(v)}</textarea>
+    <div class="row">${canClear ? `<button class="rb" data-act-clear data-save="clear">Remove flag</button>` : ""}<button class="rb" data-cancel>Cancel</button><button class="btn" data-save>Save flag</button></div></div>`;
+}
+function saveNote(b) {
+  const rv = b.closest(".rv"), key = rv.dataset.key, [tid] = key.split("~");
+  if (b.dataset.save === "clear") { delete S.reviews[key]; rv.outerHTML = reviewHTML(key); writeReview(key, null); toast("Flag removed"); return; }
+  const note = rv.querySelector("textarea").value.trim().slice(0, 2000);
+  const next = { theme: tid, status: "flag", note, at: Date.now() };
+  S.reviews[key] = next; rv.outerHTML = reviewHTML(key); writeReview(key, next); toast("Flag saved");
+}
+async function signOff(tid) {
+  if (!S.db) return;
+  const on = !(S.tstatus[tid] && S.tstatus[tid].status === "approved");
+  try {
+    if (on) { S.tstatus[tid] = { status: "approved", at: Date.now() }; await S.db.doc(`themeStatus/${tid}`).set(S.tstatus[tid]); toast("Theme signed off"); }
+    else { delete S.tstatus[tid]; await S.db.doc(`themeStatus/${tid}`).delete(); toast("Sign-off removed"); }
+  } catch (e) { toast("Couldn't save the sign-off. Try again."); }
+  remember(); render(S.cur.scroll);
+}
+function refreshReviewUI() {
+  const v = S.cur && S.cur.v;
+  if (v === "home") { const pb = $("#progbox"); if (pb) pb.outerHTML = progressHTML(); else { remember(); render(S.cur.scroll); } return; }
+  if (v === "flags") { remember(); render(S.cur.scroll); return; }
+  document.querySelectorAll(".rv").forEach(rv => { if (rv.querySelector(".note")) return; const fresh = reviewHTML(rv.dataset.key); if (rv.outerHTML !== fresh) rv.outerHTML = fresh; });
+}
+
+/* ---------- capabilities ---------- */
+async function initDb() {
+  try {
+    let tries = 0;
+    while (!window.claude && tries++ < 20) await new Promise(r => setTimeout(r, 150));
+    if (!window.claude || !window.claude.use) { S.dbState = "off"; return; }
+    const db = await window.claude.use("db");
+    if (!db) { S.dbState = "off"; return; }
+    S.db = db;
+    const user = await window.claude.use("user");
+    if (user && user.can) { try { const c = await user.can("data.write"); if (c === false) S.canWrite = false; } catch (e) {} }
+    S.dbState = "on";
+    let first = 0;
+    const done = () => { if (++first === 2) { remember(); render(S.cur.scroll); } };
+    db.collection("reviews").onSnapshot(snap => {
+      const m = {}; snap.docs.forEach(d => { const x = d.data(); if (x) m[d.id] = x; });
+      S.reviews = m; if (first < 2) done(); else refreshReviewUI();
+    }, () => {});
+    db.collection("themeStatus").onSnapshot(snap => {
+      const m = {}; snap.docs.forEach(d => { const x = d.data(); if (x) m[d.id] = x; });
+      S.tstatus = m; if (first < 2) done(); else refreshReviewUI();
+    }, () => {});
+  } catch (e) { S.dbState = "off"; }
+}
+
+/* ---------- settings ---------- */
+function openSettings() {
+  const d = $("#settings");
+  $(`#tr-${S.prefs.tr}`).checked = true; $("#showAr").checked = S.prefs.ar; $(`#sc-${S.prefs.script}`).checked = true; $("#arSize").value = S.prefs.size;
+  d.showModal();
+}
+$("#settingsForm").addEventListener("change", () => {
+  S.prefs.tr = (document.querySelector('input[name="tr"]:checked') || {}).value || "si";
+  S.prefs.ar = $("#showAr").checked; S.prefs.script = (document.querySelector('input[name="script"]:checked') || {}).value || "uthmani"; S.prefs.size = +$("#arSize").value;
+  applyPrefs(); savePrefs();
+});
+$("#settings").addEventListener("close", () => { if (["theme", "verse"].includes(S.cur.v)) { remember(); render(S.cur.scroll); } });
+
+/* ---------- boot ---------- */
+async function boot() {
+  loadPrefs();
+  try {
+    const [th, su, rv] = await Promise.all([getJSON("data/themes.json"), getJSON("data/surahs.json"), getJSON("data/reviewed.json")]);
+    S.pillars = th.pillars; S.themes = th.themes; S.surahs = su; S.reviewed = rv;
+    for (const t of S.themes) {
+      S.byId[t.id] = t;
+      t.subs.forEach((st, si) => st.p.forEach((p, pi) => p.r.forEach(([s, a, b]) => { for (let k = a; k <= b; k++) (S.verseIdx[`${s}:${k}`] ||= []).push({ tid: t.id, si, pi }); })));
+    }
+  } catch (e) { $("#view").innerHTML = `<p class="empty">${esc(e.message)}. Reopen the page to try again.</p>`; return; }
+  const h = (location.hash || "").slice(1);
+  S.cur = S.byId[h] ? { v: "theme", id: h } : { v: "home" };
+  render();
+  initDb();
+}
+boot();
+</script>
+
+</body></html>
