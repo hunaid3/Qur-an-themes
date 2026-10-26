@@ -7,18 +7,27 @@ permissions:
   contents: write
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platforms;android-34 build-tools;34.0.0 platform-tools'
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
       - name: Build debug APK
-        run: gradle :app:assembleDebug --no-daemon
+        run: |
+          set -o pipefail
+          gradle :app:assembleDebug --no-daemon --stacktrace 2>&1 | tee build.log
+      - name: Report build errors
+        if: failure()
+        run: |
+          grep -nE "What went wrong|error:|Error:|> |Could not|FAILURE|Exception" build.log | grep -v "^.*> Task" | head -40 | while IFS= read -r l; do echo "::error::${l//%/%25}"; done
       - name: Rename APK
         run: cp app/build/outputs/apk/debug/app-debug.apk QuranThemes-draft.apk
       - uses: actions/upload-artifact@v4
