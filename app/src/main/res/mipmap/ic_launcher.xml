@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="48dp" android:height="48dp" android:viewportWidth="512" android:viewportHeight="512">
+    <!-- Full icon for Android 7.0-7.1, which have no adaptive icons -->
+    <path android:fillColor="#093F35" android:pathData="M112,0H400A112,112 0 0,1 512,112V400A112,112 0 0,1 400,512H112A112,112 0 0,1 0,400V112A112,112 0 0,1 112,0Z"/>
+    <group>
+        <path android:fillColor="#0E5A4B" android:strokeColor="#C9A04A" android:strokeWidth="8" android:strokeLineJoin="round" android:pathData="M128,448V240C128,182 206,144 256,64C306,144 384,182 384,240V448Z"/>
+        <path android:strokeColor="#C9A04A" android:strokeAlpha="0.6" android:strokeWidth="4" android:pathData="M152,448V246C152,196 218,164 256,100C294,164 360,196 360,246V448"/>
+        <path android:fillColor="#E3C274" android:fillAlpha="0.12" android:pathData="M152,316a104,104 0 1,0 208,0a104,104 0 1,0 -208,0Z"/>
+        <path android:fillColor="#E3C274" android:fillAlpha="0.18" android:pathData="M190,316a66,66 0 1,0 132,0a66,66 0 1,0 -132,0Z"/>
+        <path android:fillColor="#E3C274" android:pathData="M256,106L262.4,112.4L271.6,112.4L271.6,121.6L278,128L271.6,134.4L271.6,143.6L262.4,143.6L256,150L249.6,143.6L240.4,143.6L240.4,134.4L234,128L240.4,121.6L240.4,112.4L249.6,112.4Z"/>
+        <path android:strokeColor="#C9A04A" android:strokeWidth="6" android:pathData="M256,150V220"/>
+        <path android:fillColor="#E9C979" android:pathData="M214,232H298L278,290C306,300 314,320 300,340C288,356 272,362 256,362C240,362 224,356 212,340C198,320 206,300 234,290Z"/>
+        <path android:fillColor="#C9A04A" android:pathData="M232,220H280L286,232H226Z"/>
+        <path android:fillColor="#FFF6DA" android:pathData="M256,298C267,312 267,327 256,338C245,327 245,312 256,298Z"/>
+        <path android:fillColor="#C9A04A" android:pathData="M242,362H270V372H242Z"/>
+        <path android:strokeColor="#C9A04A" android:strokeWidth="8" android:strokeLineCap="round" android:pathData="M104,448H408"/>
+    </group>
+</vector>

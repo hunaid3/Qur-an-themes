@@ -1,6 +1,6 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:statusBarColor">#24418C</item>
+        <item name="android:statusBarColor">#0E5A4B</item>
     </style>
-    <color name="ic_bg">#24418C</color>
+    <color name="ic_bg">#093F35</color>
 </resources>
