@@ -4,4 +4,6 @@ Offline Android wrapper for the Qur'an Themes prototype: 135 themes, all 6,236 v
 
 Every push to `main` builds the APK with GitHub Actions and attaches it to a new release (see the Releases page). To build locally: open this folder in Android Studio and run Build > Build APK(s).
 
+Fonts (Amiri Quran, Amiri, Reem Kufi, Marcellus, Spectral, IBM Plex Sans) are bundled under the SIL Open Font License (see `app/src/main/assets/www/fonts/OFL.txt`), so the app renders correctly offline.
+
 Review buttons (Looks right / Flag) work only in the web version on claude.ai; they are hidden in this app.
