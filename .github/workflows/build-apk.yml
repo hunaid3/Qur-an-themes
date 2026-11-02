@@ -20,24 +20,24 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
-      - name: Build debug APK
+      - name: Build release APK
         run: |
           set -o pipefail
-          gradle :app:assembleDebug --no-daemon --stacktrace 2>&1 | tee build.log
+          gradle :app:assembleRelease -PversionCode=$((100 + ${{ github.run_number }})) --no-daemon --stacktrace 2>&1 | tee build.log
       - name: Report build errors
         if: failure()
         run: |
           grep -nE "What went wrong|error:|Error:|> |Could not|FAILURE|Exception" build.log | grep -v "^.*> Task" | head -40 | while IFS= read -r l; do echo "::error::${l//%/%25}"; done
       - name: Rename APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk QuranThemes-draft.apk
+        run: cp app/build/outputs/apk/release/app-release.apk QuranThemes.apk
       - uses: actions/upload-artifact@v4
         with:
           name: QuranThemes-apk
-          path: QuranThemes-draft.apk
+          path: QuranThemes.apk
       - name: Publish as a release for easy phone download
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: Qur'an Themes draft build ${{ github.run_number }}
-          body: Draft build for testing. Install by opening the APK on your Android phone (allow installs from this source when asked).
-          files: QuranThemes-draft.apk
+          name: Qur'an Themes 1.0 (build ${{ github.run_number }})
+          body: Install by opening QuranThemes.apk on your Android phone (allow installs from this source when asked). Later builds install over this one.
+          files: QuranThemes.apk

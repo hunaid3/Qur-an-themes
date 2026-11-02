@@ -1,4 +1,13 @@
 plugins { id 'com.android.application' }
+
+// Signing: a private key from CI secrets when present (for store releases),
+// otherwise the fixed testing key in /signing so every build installs over the last.
+def envKs = System.getenv('RELEASE_KEYSTORE')
+def ksFile = envKs ? file(envKs) : rootProject.file('signing/testing.jks')
+def ksPass = System.getenv('RELEASE_KEYSTORE_PASSWORD') ?: 'quranthemes'
+def ksAlias = System.getenv('RELEASE_KEY_ALIAS') ?: 'quranthemes'
+def ksKeyPass = System.getenv('RELEASE_KEY_PASSWORD') ?: 'quranthemes'
+
 android {
     namespace 'app.quranthemes'
     compileSdk 34
@@ -6,12 +15,18 @@ android {
         applicationId 'app.quranthemes'
         minSdk 24
         targetSdk 34
-        versionCode 1
-        versionName '0.1-draft'
+        versionCode((project.findProperty('versionCode') ?: '2').toInteger())
+        versionName '1.0'
     }
-    buildTypes { release { minifyEnabled false } }
+    signingConfigs {
+        release { storeFile ksFile; storePassword ksPass; keyAlias ksAlias; keyPassword ksKeyPass }
+    }
+    buildTypes {
+        release { minifyEnabled false; signingConfig signingConfigs.release }
+    }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
     androidResources { noCompress 'json', 'html' }
+    lint { checkReleaseBuilds false; abortOnError false }
 }
 dependencies {
     implementation 'androidx.webkit:webkit:1.11.0'

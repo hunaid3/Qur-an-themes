@@ -1,8 +1,10 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Qur'an Themes</title>
+<meta name="description" content="Read the Qur'an one theme at a time: 135 themes with Arabic text, English translation and tafsir.">
+<meta name="theme-color" content="#0E5A4B">
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>@font-face{font-family:"Amiri Quran";src:url("fonts/AmiriQuran-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Amiri";src:url("fonts/Amiri-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Reem Kufi";src:url("fonts/ReemKufi[wght].ttf") format("truetype");font-weight:400 700;font-style:normal;font-display:swap}@font-face{font-family:"Marcellus";src:url("fonts/Marcellus-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Spectral";src:url("fonts/Spectral-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Spectral";src:url("fonts/Spectral-Italic.ttf") format("truetype");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:"Spectral";src:url("fonts/Spectral-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:"Spectral";src:url("fonts/Spectral-SemiBold.ttf") format("truetype");font-weight:600;font-style:normal;font-display:swap}@font-face{font-family:"IBM Plex Sans";src:url("fonts/IBMPlexSans[wdth,wght].ttf") format("truetype");font-weight:100 700;font-style:normal;font-display:swap}</style>
 <style>
-/* Layout: Fatimid frame. An emerald header with a gold lozenge band; keel-arch tiles (after the Al-Aqmar facade), one jewel tone per pillar; eight-point star lattices as quiet texture; a single 48rem reading column. */
+/* Layout: Fatimid frame. An emerald header with a gold lozenge band; keel-arch tiles (after the Al-Aqmar facade), one jewel tone per gateway; eight-point star lattices as quiet texture; a single 48rem reading column. */
 :root{
   --paper:#F5F1E8; --surface:#FFFDF8; --sunk:#EFE9DC; --ink:#1B2230; --muted:#5D6371; --line:#E0D7C4;
   --emerald:#0E5A4B; --emerald-deep:#093F35; --on-emerald:#F8F1DF; --gold:#8C6516; --gold-bright:#C9A04A; --gold-soft:#F4E9CC;
@@ -93,8 +95,6 @@ h1,h2,h3{text-wrap:balance;font-weight:400}
 .hbtn.solid{background:var(--gold-bright);color:#2A1F07;border-color:var(--gold-bright)}
 .hbtn svg{width:1rem;height:1rem}
 
-.notice{display:flex;gap:.7rem;align-items:flex-start;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 30%,transparent);border-radius:12px;padding:.7rem .9rem;font:400 .8438rem/1.45 var(--f-ui)}
-.notice b{font-weight:600}
 
 .search{display:flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:0 1rem}
 .search svg{width:1.1rem;height:1.1rem;color:var(--gold);flex:none}
@@ -165,9 +165,6 @@ h1,h2,h3{text-wrap:balance;font-weight:400}
 .seen svg{width:.8rem;height:.8rem}
 
 .pill{display:inline-flex;align-items:center;gap:.35rem;font:600 .6875rem/1 var(--f-ui);letter-spacing:.06em;text-transform:uppercase;padding:.35rem .55rem;border-radius:999px;white-space:nowrap}
-.p-draft{background:var(--sunk);color:var(--muted)}
-.p-partial{background:var(--gold-soft);color:var(--gold)}
-.p-ok{background:var(--ok-soft);color:var(--ok)}
 .p-warn{background:var(--warn-soft);color:var(--warn)}
 .dot{width:.5rem;height:.5rem;border-radius:50%;background:currentColor;display:inline-block}
 
@@ -212,7 +209,6 @@ h1,h2,h3{text-wrap:balance;font-weight:400}
 .refrow{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;font:500 .8125rem/1.2 var(--f-ui);color:var(--muted)}
 .ref{border:0;background:var(--pcs,var(--lapis-soft));color:var(--pc,var(--lapis));font:600 .8125rem/1 var(--f-ui);padding:.42rem .62rem;border-radius:999px;cursor:pointer;font-variant-numeric:tabular-nums}
 .tag{font:500 .72rem/1 var(--f-ui);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.3rem .5rem}
-.badge-ed{font:600 .6875rem/1 var(--f-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--ok);background:var(--ok-soft);padding:.32rem .5rem;border-radius:999px}
 
 .ayat{position:relative;direction:rtl;text-align:center;font:400 calc(1.65rem * var(--ar-scale))/2.2 var(--f-ar);color:var(--ink);padding:.9rem 1rem;border-radius:14px;overflow-wrap:anywhere;
   background:linear-gradient(var(--gold-soft),var(--gold-soft)) padding-box;border:1px solid color-mix(in srgb,var(--gold) 35%,transparent);--lat-o:.07}
@@ -226,8 +222,8 @@ h1,h2,h3{text-wrap:balance;font-weight:400}
 .tr + .tr.alt{margin-top:-.25rem}
 .more{justify-self:start;border:1px dashed color-mix(in srgb,var(--pc,var(--gold)) 50%,transparent);background:transparent;border-radius:999px;padding:.45rem .8rem;font:600 .8125rem/1.2 var(--f-ui);color:var(--pc,var(--lapis));cursor:pointer}
 
-.ed{border-left:3px solid var(--ok);background:var(--ok-soft);border-radius:0 12px 12px 0;padding:.75rem .9rem;display:grid;gap:.5rem;font-size:.9688rem}
-.ed h4{margin:0;font:600 .75rem/1.2 var(--f-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--ok)}
+.ed{border-left:3px solid var(--gold-bright);background:var(--gold-soft);border-radius:0 12px 12px 0;padding:.75rem .9rem;display:grid;gap:.5rem;font-size:.9688rem}
+.ed h4{margin:0;font:600 .75rem/1.2 var(--f-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--gold)}
 .ed p{margin:0}
 .ed .lbl{font:600 .75rem/1.2 var(--f-ui);color:var(--ink);letter-spacing:.03em}
 
@@ -245,15 +241,6 @@ details.tf>summary small{color:var(--muted);font-weight:400}
 .tfbody .vh{font:600 .75rem/1.2 var(--f-ui);color:var(--gold)}
 .ikbox{display:grid;gap:.6rem;min-width:0}
 
-.rv{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:.65rem;font:500 .8125rem/1.2 var(--f-ui)}
-.rv .lab{color:var(--muted);margin-right:auto}
-.rb{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.42rem .75rem;cursor:pointer;display:inline-flex;gap:.35rem;align-items:center;font:500 .8125rem/1 var(--f-ui)}
-.rb[aria-pressed="true"].ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
-.rb[aria-pressed="true"].fl{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
-.note{width:100%;display:grid;gap:.4rem}
-.note textarea{width:100%;min-height:4.5rem;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:400 .9375rem/1.4 var(--f-ui);padding:.5rem .6rem;resize:vertical}
-.note .row{display:flex;gap:.5rem;justify-content:flex-end}
-.savednote{width:100%;margin:0;font:400 .875rem/1.4 var(--f-ui);color:var(--warn);background:var(--warn-soft);border-radius:10px;padding:.45rem .6rem}
 
 .btn{border:1px solid var(--emerald);background:var(--emerald);color:var(--on-emerald);border-radius:999px;padding:.6rem 1rem;font:600 .875rem/1.2 var(--f-ui);cursor:pointer}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
@@ -283,11 +270,6 @@ details.tf>summary small{color:var(--muted);font-weight:400}
 .vhead .ar{font:500 1.3rem/1.4 var(--f-kufi);direction:rtl}
 
 .vnav{display:flex;justify-content:space-between;gap:.5rem}
-.prog{display:grid;gap:.5rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:.9rem 1rem}
-.prog .bars{height:.45rem;border-radius:999px;background:var(--sunk);overflow:hidden;display:flex}
-.prog .bars i{display:block;height:100%}
-.prog .row{display:flex;gap:1rem;flex-wrap:wrap;font:500 .8125rem/1.3 var(--f-ui);color:var(--muted);font-variant-numeric:tabular-nums;align-items:center}
-.prog .row b{color:var(--ink)}
 
 dialog{border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);padding:0;width:min(30rem,calc(100vw - 32px));max-height:calc(100dvh - 48px)}
 dialog::backdrop{background:rgb(6 20 18 / .5)}
@@ -305,9 +287,12 @@ dialog::backdrop{background:rgb(6 20 18 / .5)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes rise{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
 .stack>*{animation:rise .35s ease-out both}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(1rem + env(safe-area-inset-bottom,0px));background:var(--emerald);color:var(--on-emerald);border:1px solid var(--gold-bright);font:500 .875rem/1.3 var(--f-ui);padding:.6rem 1rem;border-radius:999px;z-index:20;max-width:calc(100vw - 32px)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media (min-width:40rem){ .pc{padding:1.2rem 1.35rem} .hero{padding:1.8rem 1.6rem 1.6rem} }
+.foot-src{display:grid;gap:.4rem;text-align:center;font:400 .8125rem/1.5 var(--f-ui);color:var(--muted);padding:.5rem 0 1rem}
+.foot-src p{margin:0}
+.foot-src button{background:none;border:0;padding:0;color:var(--gold);font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.err{display:grid;gap:.8rem;justify-items:center;text-align:center;padding:3rem 1rem}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -325,7 +310,7 @@ dialog::backdrop{background:rgb(6 20 18 / .5)}
   <button class="ib" id="btnSettings" aria-label="Reading settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
 </div><div class="rprog" id="rprog"></div></header>
 
-<main class="wrap" id="view"><p class="loading">Loading the themes…</p></main>
+<main class="wrap" id="view"><p class="loading">Loading the themes…</p><noscript><p class="empty">This app needs JavaScript turned on.</p></noscript></main>
 
 <dialog id="settings"><form method="dialog" class="dlg" id="settingsForm">
   <h2>Reading settings</h2>
@@ -341,10 +326,12 @@ dialog::backdrop{background:rgb(6 20 18 / .5)}
     <label for="arSize">Arabic size</label>
     <input type="range" id="arSize" min="0.8" max="1.6" step="0.1">
   </fieldset>
-  <div class="src">
-    <p><b>About this content.</b> Theme mappings, lens lines, overviews and lessons are drafts written for review. The verse texts and tafsir are pulled by reference from their sources and are not retyped.</p>
-    <p>Arabic: Uthmani Hafs text (King Fahd Complex), via the fawazahmed0 Quran API. Translations: Sahih International; Ali Quli Qarai. Tafsir: al-Mukhtasar (Tafsir Center for Quranic Studies, English); Ibn Kathir (abridged English), via the spa5k tafsir API.</p>
-    <p>Translation and tafsir licences must be confirmed before any public release.</p>
+  <div class="src" id="sources">
+    <p><b>Sources</b></p>
+    <p>Arabic: Uthmani Hafs text (King Fahd Complex for the Printing of the Holy Qur'an).</p>
+    <p>Translations: Sahih International; Ali Quli Qarai.</p>
+    <p>Tafsir: al-Mukhtasar fi Tafsir al-Qur'an (Tafsir Center for Quranic Studies, English); Tafsir Ibn Kathir (abridged English).</p>
+    <p>Verse texts and tafsir are shown as published by their sources. Theme groupings, summaries and lessons are written for this app.</p>
   </div>
   <button class="btn" value="close">Done</button>
 </form></dialog>
@@ -355,7 +342,6 @@ const AR_DIGITS = "٠١٢٣٤٥٦٧٨٩";
 const S = {
   pillars: [], themes: [], byId: {}, surahs: [], reviewed: {}, verseIdx: {},
   vcache: {}, kcache: {}, stack: [], cur: null, seen: new Set(), votdList: [], basmala: "",
-  db: null, dbState: "pending", canWrite: true, reviews: {}, tstatus: {},
   prefs: { tr: "si", ar: true, size: 1, script: "uthmani" }
 };
 const $ = (s, r = document) => r.querySelector(s);
@@ -363,8 +349,6 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": 
 const arNum = n => String(n).replace(/\d/g, d => AR_DIGITS[d]);
 const fmt = n => n.toLocaleString("en-US");
 const refStr = ([s, a, b]) => a === b ? `${s}:${a}` : `${s}:${a}–${b}`;
-const refKey = ([s, a, b]) => `${s}:${a}-${b}`;
-const pKey = (tid, refs) => `${tid}~${refs.map(refKey).join("+")}`;
 const sName = n => S.surahs[n - 1] ? S.surahs[n - 1].name : `Surah ${n}`;
 const PIL = { AQ: ["aq", "العقيدة"], GH: ["gh", "الغيب"], QR: ["qr", "القرآن"], PR: ["pr", "الأنبياء"], AK: ["ak", "الآخرة"], WS: ["ws", "العبادة"], CR: ["cr", "الأخلاق"], LS: ["ls", "الشريعة"], GV: ["gv", "المجتمع"], CN: ["cn", "الخلق"] };
 const pcv = pid => { const k = (PIL[pid] || ["qr"])[0]; return `--pc:var(--c-${k});--pcs:var(--c-${k}-s)`; };
@@ -385,21 +369,7 @@ async function getJSON(u) { const r = await fetch(u); if (!r.ok) throw new Error
 function verses(s) { if (!S.vcache[s]) { const p = getJSON(`data/s/${s}.json`).then(arr => { p.__v = arr; return arr; }); p.catch(() => { delete S.vcache[s]; }); S.vcache[s] = p; } return S.vcache[s]; }
 function ikath(s) { return S.kcache[s] || (S.kcache[s] = getJSON(`data/k/${s}.json`)); }
 
-function themeStatus(t) {
-  const d = S.tstatus[t.id];
-  if (d && d.status === "approved") return { cls: "ok", label: "Reviewed" };
-  if (t.status === "draft-contested") return { cls: "warn", label: "Contested topic · Draft" };
-  if (t.status === "review") return { cls: "partial", label: "Partly reviewed" };
-  return { cls: "draft", label: "Draft" };
-}
-function themeProgress(t) {
-  let ok = 0, fl = 0;
-  for (const st of t.subs) for (const p of st.p) {
-    const r = S.reviews[pKey(t.id, p.r)];
-    if (r && r.status === "ok") ok++; else if (r && r.status === "flag") fl++;
-  }
-  return { ok, fl, n: t.np };
-}
+function themeNote(t) { return t.status === "draft-contested" ? `<span class="pill p-warn"><span class="dot"></span>Views differ</span>` : ""; }
 
 /* ---------- navigation ---------- */
 function go(view, push = true) {
@@ -419,10 +389,11 @@ window.addEventListener("scroll", () => { if (!S.cur || S.cur.v !== "theme") ret
 async function render(restoreScroll) {
   const v = S.cur, el = $("#view");
   try {
+    if (v.v !== "theme") setHash("");
     if (v.v === "home") { setBar(HOMEBAR); el.innerHTML = homeHTML(); bindHome(); fillVotd(); }
     else if (v.v === "pillar") { const p = S.pillars.find(x => x.id === v.id); setBar(`<b>${esc(p.title)}</b>`); el.innerHTML = pillarHTML(p); bindTheme(el); }
     else if (v.v === "search") { setBar("<b>Search</b>"); el.innerHTML = searchHTML(v.q); bindSearch(); }
-    else if (v.v === "flags") { setBar("<b>Your review notes</b>"); el.innerHTML = flagsHTML(); bindTheme(el); }
+    else if (v.v === "gateways") { setBar("<b>The ten gateways</b>"); el.innerHTML = `<div class="stack"><div class="shead">${ORN}<div class="ar" lang="ar">مجالات الموضوعات</div><h2>The ten gateways</h2></div><div class="tiles">${S.pillars.map(tileHTML).join("")}</div></div>`; bindTheme(el); }
     else if (v.v === "theme") {
       const t = S.byId[v.id]; if (!t) { go({ v: "home" }, false); return; }
       setBar(`<b>${esc(t.id)}</b> · ${esc(t.title)}`);
@@ -434,6 +405,7 @@ async function render(restoreScroll) {
       bindTheme(el);
       markSeen(t.id);
       try { localStorage.setItem("qt-last", t.id); } catch (e) {}
+      setHash(t.id);
     }
     else if (v.v === "verse") {
       setBar(`<b>${esc(sName(v.s))}</b> ${v.s}:${v.a}`);
@@ -444,34 +416,34 @@ async function render(restoreScroll) {
       bindTheme(el);
     }
   } catch (e) {
-    el.innerHTML = `<p class="empty">${esc(e.message)}. Check your connection and reopen this page.</p>`;
+    el.innerHTML = errHTML("This page couldn't load. Check your connection and try again.");
   }
   if (restoreScroll != null) window.scrollTo(0, restoreScroll);
   else if (v.focus) { const t = document.getElementById(v.focus); if (t) { t.classList.add("hl"); t.scrollIntoView({ block: "start" }); } }
   else window.scrollTo(0, 0);
 }
 function remember() { if (S.cur) S.cur.scroll = window.scrollY; }
+function jumpTo(id) {
+  const t = document.getElementById(id); if (!t) return;
+  const off = ($("#bar")?.offsetHeight || 0) + 12;
+  const y = Math.max(0, t.getBoundingClientRect().top + window.scrollY - off);
+  const se = document.scrollingElement || document.documentElement, before = se.scrollTop;
+  se.scrollTop = y; window.scrollTo(0, y);
+  if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - before) < 2 && Math.abs(before - y) > 2) {
+    try { t.scrollIntoView({ block: "start" }); } catch (e) {}
+  }
+  const f = t.matches("button") ? t : (t.nextElementSibling?.querySelector?.("button") || t.querySelector("button"));
+  const moved = Math.abs((document.scrollingElement || document.documentElement).scrollTop - before) > 2;
+  if (f) try { f.focus({ preventScroll: moved }); } catch (e) {}
+}
+function setHash(id) { try { history.replaceState(null, "", id ? "#" + id : location.pathname + location.search); } catch (e) {} }
+function errHTML(msg) { return `<div class="err"><p class="empty" style="padding:0">${esc(msg)}</p><button class="btn" data-retry>Try again</button></div>`; }
 
 /* ---------- home ---------- */
-function totals() {
-  const np = S.themes.reduce((a, t) => a + t.np, 0);
-  let ok = 0, fl = 0;
-  for (const r of Object.values(S.reviews)) { if (r.status === "ok") ok++; else if (r.status === "flag") fl++; }
-  return { np, ok, fl, appr: Object.values(S.tstatus).filter(x => x.status === "approved").length };
-}
-function progressHTML() {
-  if (S.dbState !== "on") return "";
-  const T = totals(), w = x => (100 * x / T.np).toFixed(2);
-  return `<section class="prog" aria-label="Review progress" id="progbox">
-    <div class="row"><span class="eyebrow" style="margin-right:auto">Review progress</span><span><b>${fmt(T.ok)}</b> checked</span><span><b>${fmt(T.fl)}</b> flagged</span><span><b>${T.appr}</b> of ${S.themes.length} themes signed off</span></div>
-    <div class="bars"><i style="width:${w(T.ok)}%;background:var(--ok)"></i><i style="width:${w(T.fl)}%;background:var(--warn)"></i></div>
-    ${T.ok + T.fl ? `<div class="row"><button class="btn ghost" data-go="flags">Open your notes and flags</button></div>` : `<div class="row">Open any theme and tap "Looks right" or "Flag" on a passage. Your marks are saved here for the next review pass.</div>`}
-  </section>`;
-}
 function exploreHTML() {
   const N = S.themes.length, n = S.seen.size, c = 2 * Math.PI * 24, off = c * (1 - n / N);
   return `<section class="explore"><svg class="ring" viewBox="0 0 56 56" role="img" aria-label="${n} of ${N} themes explored"><circle class="t" cx="28" cy="28" r="24"/><circle class="v" cx="28" cy="28" r="24" stroke-dasharray="${c.toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}"/><text x="28" y="28">${Math.round(100 * n / N)}%</text></svg>
-    <div><h3>${n ? `You've explored ${n} of ${N} themes` : "Begin your journey"}</h3><p>${n ? "Each pillar's bar fills as you read its themes." : "Open any theme, or tap Surprise me. Your progress shows here."}</p>
+    <div><h3>${n ? `You've explored ${n} of ${N} themes` : "Begin your journey"}</h3><p>${n ? "Each gateway's bar fills as you read its themes." : "Open any theme, or tap Surprise me. Your progress shows here."}</p>
     <div class="bars">${S.pillars.map(p => { const ts = S.themes.filter(t => t.pillar === p.id), k = ts.filter(t => S.seen.has(t.id)).length; return `<i style="${pcv(p.id)}" title="${esc(p.title)}: ${k} of ${ts.length}"><b style="width:${(100 * k / ts.length).toFixed(1)}%"></b></i>`; }).join("")}</div></div></section>`;
 }
 function tileHTML(p) {
@@ -491,17 +463,16 @@ function homeHTML() {
       <div class="eyebrow" style="color:var(--gold-bright)">A thematic journey through the Qur'an</div>
       <h1>Qur'an Themes</h1>
       <p class="sub">Every theme gathers its verses, with translation and tafsir, so you can read the Qur'an one subject at a time.</p>
-      <div class="stats"><span><b>${S.themes.length}</b>themes</span><span><b>${S.pillars.length}</b>pillars</span><span><b>${fmt(np)}</b>passages</span><span><b>${fmt(6236)}</b>verses</span></div>
-      <div class="acts"><button class="hbtn solid" data-surprise><svg aria-hidden="true"><use href="#i-star"/></svg>Surprise me</button><button class="hbtn" data-jump="pillars">Browse the pillars</button></div>
+      <div class="stats"><span><b>${S.themes.length}</b>themes</span><span><b>${S.pillars.length}</b>gateways</span><span><b>${fmt(np)}</b>passages</span><span><b>${fmt(6236)}</b>verses</span></div>
+      <div class="acts"><button class="hbtn solid" data-surprise><svg aria-hidden="true"><use href="#i-star"/></svg>Surprise me</button><button class="hbtn" data-gateways>Browse the gateways</button></div>
     </div></section>
     <label class="search" for="homeq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="homeq" type="search" placeholder="Search a topic like patience, or a verse like 31:13" autocomplete="off"></label>
     ${lt ? `<button class="cont" data-theme="${esc(lt.id)}" style="${pcv(lt.pillar)}"><span class="ic">${esc(lt.id)}</span><div><span class="eyebrow">Continue reading</span><h3>${esc(lt.title)}</h3></div></button>` : ""}
     <section class="votd lattice" id="votd" aria-live="polite"><div class="lab"><svg aria-hidden="true"><use href="#i-star"/></svg>Verse of the day</div><p class="en" style="color:var(--muted)">Loading today's verse…</p></section>
     ${exploreHTML()}
-    ${progressHTML()}
-    <div class="shead" id="pillars" style="scroll-margin-top:5rem">${ORN}<div class="ar" lang="ar">أركان الموضوعات</div><h2>The ten pillars</h2></div>
+    <div class="shead" id="pillars" style="scroll-margin-top:5rem">${ORN}<div class="ar" lang="ar">مجالات الموضوعات</div><h2>The ten gateways</h2></div>
     <div class="tiles">${S.pillars.map(tileHTML).join("")}</div>
-    <div class="notice" role="note"><span class="pill p-draft"><span class="dot"></span>Draft</span><span>Every theme is an <b>unreviewed draft</b>, except the Luqman passages in Father and son. Verse text and tafsir come from their sources; the theme summaries and lens lines still need scholarly review.</span></div>
+    <footer class="foot-src"><p>Arabic text, translations and tafsir are quoted from their published sources.</p><p><button data-sources>Sources and reading settings</button></p></footer>
   </div>`;
 }
 async function fillVotd() {
@@ -526,9 +497,9 @@ function bindHome() {
 
 /* ---------- pillar ---------- */
 function themeRow(t, i) {
-  const st = themeStatus(t), pr = themeProgress(t), seen = S.seen.has(t.id);
+  const seen = S.seen.has(t.id);
   return `<button class="trow" data-theme="${esc(t.id)}" style="${pcv(t.pillar)}"><span class="num">${i + 1}</span><h3>${esc(t.title)}${seen ? `<span class="seen"><svg aria-hidden="true"><use href="#i-check"/></svg>Read</span>` : ""}</h3><p>${esc(t.hook)}</p>
-    <span class="meta"><span class="pill p-${st.cls}"><span class="dot"></span>${st.label}</span><span class="nums">${t.np} passages · ${fmt(t.nv)} verses${pr.ok + pr.fl ? ` · ${pr.ok} checked, ${pr.fl} flagged` : ""}</span></span></button>`;
+    <span class="meta">${themeNote(t)}<span class="nums">${t.np} passages · ${fmt(t.nv)} verses</span></span></button>`;
 }
 function pillarHTML(p) {
   const ts = S.themes.filter(t => t.pillar === p.id), k = ts.filter(t => S.seen.has(t.id)).length;
@@ -566,19 +537,7 @@ function edBlock(tid, refs) {
     const sec = (lab, arr) => arr && arr.length ? `<div><div class="lbl">${lab}</div>${arr.map(x => `<p>${esc(x)}</p>`).join("")}</div>` : "";
     parts.push(`${refs.length > 1 || a !== b ? `<div class="lbl">${s}:${k}</div>` : ""}${sec("Tafsir", r.tafsir)}${sec("Scholarly insight", r.insight)}${sec("Occasion of revelation", r.context)}${sec("Sahih hadith", r.hadith)}${sec("Key words", r.keywords)}`);
   }
-  return parts.length ? `<div class="ed"><h4>Editor-reviewed notes</h4>${parts.join("")}</div>` : "";
-}
-function isEdited(tid, refs) { for (const [s, a, b] of refs) for (let k = a; k <= b; k++) if (S.reviewed[`${tid}|${s}:${k}`]) return true; return false; }
-function reviewHTML(key) {
-  if (S.dbState !== "on" || key.startsWith("VERSE~")) return "";
-  const r = S.reviews[key] || {};
-  const ro = !S.canWrite;
-  return `<div class="rv" data-key="${esc(key)}">
-    <span class="lab">${r.status === "ok" ? "You marked this as right" : r.status === "flag" ? "Flagged for review" : "Your review"}</span>
-    <button class="rb ok" data-act="ok" aria-pressed="${r.status === "ok"}" ${ro ? "disabled" : ""}>✓ Looks right</button>
-    <button class="rb fl" data-act="flag" aria-pressed="${r.status === "flag"}" ${ro ? "disabled" : ""}>⚑ Flag</button>
-    ${r.note ? `<p class="savednote">${esc(r.note)}</p>` : ""}
-  </div>`;
+  return parts.length ? `<div class="ed"><h4>Study notes</h4>${parts.join("")}</div>` : "";
 }
 function passageHTML(t, p, id) {
   const all = countVerses(p.r) <= 6;
@@ -587,13 +546,12 @@ function passageHTML(t, p, id) {
   const refsHtml = p.r.map(r => `<button class="ref" data-verse="${r[0]}:${r[1]}">${esc(sName(r[0]))} ${refStr(r)}</button><span class="tag">${S.surahs[r[0] - 1].rev}</span>`).join("");
   return `<article class="pc" id="${id}" data-tid="${esc(t.id)}" data-refs='${JSON.stringify(p.r)}'>
     <p class="lens">${esc(p.l)}</p>
-    <div class="refrow">${refsHtml}${isEdited(t.id, p.r) ? `<span class="badge-ed">Editor reviewed</span>` : ""}</div>
+    <div class="refrow">${refsHtml}</div>
     <div class="vbody">${L.ar ? `<div class="ayat lattice" lang="ar">${L.ar}</div>` : ""}<div class="trs">${L.tr}</div></div>
     ${!all ? `<button class="more" data-allv>Show all ${tot} verses</button>` : ""}
     ${edBlock(t.id, p.r)}
     <details class="tf" data-tf="mk"><summary>Concise tafsir <small>al-Mukhtasar</small></summary><div class="tfbody"></div></details>
     <details class="tf" data-tf="ik"><summary>Classical tafsir <small>Ibn Kathir</small></summary><div class="tfbody"></div></details>
-    ${reviewHTML(pKey(t.id, p.r))}
   </article>`;
 }
 async function fillTafsir(det) {
@@ -610,9 +568,9 @@ async function fillTafsir(det) {
       const secs = await ikath(s);
       for (const [x, y, txt] of secs) if (y >= a && x <= b) parts.push({ s, x, y, txt });
     }
-    body.innerHTML = parts.length ? parts.map(pt => `<div class="vh">Ibn Kathir on ${pt.s}:${pt.x}${pt.y !== pt.x ? "–" + pt.y : ""}</div><div class="ikbox">${ikParas(pt.txt)}</div>`).join("") + `<p class="empty">Classical source text, shown in full. It has not yet been filtered under the app's content rules.</p>`
+    body.innerHTML = parts.length ? parts.map(pt => `<div class="vh">Ibn Kathir on ${pt.s}:${pt.x}${pt.y !== pt.x ? "–" + pt.y : ""}</div><div class="ikbox">${ikParas(pt.txt)}</div>`).join("")
       : `<p class="empty">No Ibn Kathir section covers these verses in the source.</p>`;
-  } catch (e) { body.innerHTML = `<p class="empty">${esc(e.message)}</p>`; delete body.dataset.done; }
+  } catch (e) { body.innerHTML = `<p class="empty">Ibn Kathir couldn't load. Close and reopen this section to try again.</p>`; delete body.dataset.done; }
 }
 function ikParas(txt) {
   return txt.split(/\n{2,}/).map(p => p.trim()).filter(Boolean).map(p => {
@@ -625,9 +583,7 @@ function ikParas(txt) {
 
 /* ---------- theme ---------- */
 async function themeHTML(t) {
-  const st = themeStatus(t), pr = themeProgress(t);
   const pil = S.pillars.find(p => p.id === t.pillar);
-  const signed = S.tstatus[t.id] && S.tstatus[t.id].status === "approved";
   const sh = (title, small) => `<div class="sh">${ORN}<h2>${esc(title)}</h2>${small ? `<small>${small}</small>` : ""}</div>`;
   const idx = S.themes.indexOf(t), nx = S.themes[(idx + 1) % S.themes.length];
   return `<div class="stack" style="${pcv(t.pillar)}">
@@ -635,9 +591,8 @@ async function themeHTML(t) {
       <div class="crumb"><button data-pillar="${esc(t.pillar)}">${esc(pil ? pil.title : "")}</button><span>${esc(t.id)}</span></div>
       <h1>${esc(t.title)}</h1>
       <p class="hook">${esc(t.hook)}</p>
-      <div class="metarow"><span class="pill p-${st.cls}"><span class="dot"></span>${st.label}</span><span class="chipx">${t.np} passages</span><span class="chipx">${fmt(t.nv)} verses</span>${S.dbState === "on" ? `<span class="chipx">${pr.ok} checked · ${pr.fl} flagged</span>` : ""}</div>
+      <div class="metarow">${themeNote(t)}<span class="chipx">${t.np} passages</span><span class="chipx">${fmt(t.nv)} verses</span></div>
     </div></section>
-    ${S.dbState === "on" && S.canWrite ? `<div><button class="btn ${signed ? "ghost" : ""}" data-signoff="${esc(t.id)}">${signed ? "Undo sign-off" : "Sign off this theme"}</button></div>` : ""}
     <nav class="toc" aria-label="On this page">
       <button data-jump="sec-ov">Overview</button>${t.subs.map((x, i) => `<button data-jump="sec-${i}">${esc(x.t)}</button>`).join("")}<button data-jump="sec-ls">Lessons</button>${t.links.length ? `<button data-jump="sec-ln">Connections</button>` : ""}
     </nav>
@@ -649,7 +604,7 @@ async function themeHTML(t) {
     <section class="sec" id="sec-ls">${sh("Lessons")}<ol class="lessons">${t.lessons.map(l => `<li>${esc(l)}</li>`).join("")}</ol></section>
     ${t.links.length ? `<section class="sec" id="sec-ln">${sh("Connections")}<div class="links">${t.links.map(id => S.byId[id] ? `<button class="tl" data-theme="${esc(id)}" style="${pcv(S.byId[id].pillar)}">${esc(S.byId[id].title)}</button>` : "").join("")}</div></section>` : ""}
     <button class="next lattice" data-theme="${esc(nx.id)}" style="${pcv(nx.pillar)}"><span class="eyebrow">Next theme · ${esc(nx.id)}</span><h3>${esc(nx.title)}</h3><p>${esc(nx.hook)}</p>${ARROW}</button>
-    <p class="nums" style="text-align:center">Sources: Arabic Uthmani Hafs text; Sahih International and Ali Quli Qarai translations; al-Mukhtasar and Ibn Kathir (English). Theme mapping and summaries: draft for scholarly review.</p>
+    <footer class="foot-src"><p>Sources: Uthmani Hafs Arabic text; Sahih International and Ali Quli Qarai translations; al-Mukhtasar and Ibn Kathir tafsir.</p></footer>
   </div>`;
 }
 
@@ -711,24 +666,6 @@ function bindSearch() {
   if (!q.value) q.focus();
 }
 
-/* ---------- review list ---------- */
-function flagsHTML() {
-  const items = Object.entries(S.reviews).map(([k, r]) => ({ k, ...r })).sort((a, b) => (b.status === "flag") - (a.status === "flag") || (b.at || 0) - (a.at || 0));
-  if (!items.length) return `<p class="empty">You haven't marked any passages yet.</p>`;
-  const row = it => {
-    const [tid, rs] = it.k.split("~"); const t = S.byId[tid];
-    if (!t) return "";
-    let loc = null;
-    t.subs.forEach((st, si) => st.p.forEach((p, pi) => { if (pKey(tid, p.r) === it.k) loc = { si, pi, p, st }; }));
-    if (!loc) return "";
-    return `<button class="ri" data-theme="${esc(tid)}" data-focus="p-${loc.si}-${loc.pi}" style="${pcv(t.pillar)}"><span class="k">${it.status === "flag" ? "⚑ Flagged" : "✓ Checked"} · ${esc(tid)} · ${loc.p.r.map(refStr).join(", ")}</span><span class="x">${esc(loc.p.l)}</span>${it.note ? `<span class="x" style="color:var(--warn)">${esc(it.note)}</span>` : ""}</button>`;
-  };
-  const fl = items.filter(i => i.status === "flag"), ok = items.filter(i => i.status === "ok");
-  return `<div class="stack"><section class="vhead"><h1 style="color:var(--ink)">Your review notes</h1><p class="nums"><b>${fl.length}</b> flagged · <b>${ok.length}</b> checked</p></section>
-    ${fl.length ? `<div class="res"><div class="eyebrow">Flagged</div>${fl.map(row).join("")}</div>` : ""}
-    ${ok.length ? `<div class="res"><div class="eyebrow">Checked</div>${ok.map(row).join("")}</div>` : ""}</div>`;
-}
-
 /* ---------- shared bindings ---------- */
 function bindTheme(root) {
   root.onclick = async e => {
@@ -737,98 +674,18 @@ function bindTheme(root) {
     if (b.dataset.theme) { remember(); go({ v: "theme", id: b.dataset.theme, focus: b.dataset.focus }); return; }
     if (b.dataset.pillar) { remember(); go({ v: "pillar", id: b.dataset.pillar }); return; }
     if (b.hasAttribute("data-surprise")) { remember(); go({ v: "theme", id: surprise() }); return; }
-    if (b.dataset.go === "flags") { remember(); go({ v: "flags" }); return; }
+    if (b.hasAttribute("data-sources")) { openSettings(); return; }
+    if (b.hasAttribute("data-gateways")) { remember(); go({ v: "gateways" }); return; }
+    if (b.hasAttribute("data-retry")) { render(); return; }
     if (b.dataset.verse) { const [s, a] = b.dataset.verse.split(":").map(Number); if (b.hasAttribute("data-replace")) { S.cur = { v: "verse", s, a }; render(); } else { remember(); go({ v: "verse", s, a }); } return; }
-    if (b.dataset.jump) { document.getElementById(b.dataset.jump)?.scrollIntoView({ block: "start" }); return; }
+    if (b.dataset.jump) { jumpTo(b.dataset.jump); return; }
     if (b.hasAttribute("data-allv")) {
       const art = b.closest("[data-refs]"), refs = JSON.parse(art.dataset.refs), L = verseLines(refs, true);
       art.querySelector(".vbody").innerHTML = `${L.ar ? `<div class="ayat lattice" lang="ar">${L.ar}</div>` : ""}<div class="trs">${L.tr}</div>`;
       b.remove(); return;
     }
-    if (b.dataset.signoff) { signOff(b.dataset.signoff); return; }
-    if (b.dataset.act) { reviewAct(b); return; }
-    if (b.dataset.save !== undefined) { saveNote(b); return; }
-    if (b.dataset.cancel !== undefined) { const rv = b.closest(".rv"); rv.outerHTML = reviewHTML(rv.dataset.key); return; }
   };
   root.querySelectorAll("details.tf").forEach(d => d.addEventListener("toggle", () => { if (d.open) fillTafsir(d); }));
-}
-
-/* ---------- review writes ---------- */
-function toast(msg) { const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), 2600); }
-async function writeReview(key, data) {
-  if (!S.db) return;
-  const ref = S.db.doc(`reviews/${key}`);
-  try { if (data === null) await ref.delete(); else await ref.set(data); }
-  catch (e) {
-    if (e && e.code === "invalid_argument") { S.canWrite = false; toast("You can read this app but not save reviews on it."); }
-    else toast("Couldn't save. Check your connection and try again.");
-  }
-}
-function reviewAct(b) {
-  const rv = b.closest(".rv"), key = rv.dataset.key, cur = S.reviews[key] || {};
-  const [tid] = key.split("~");
-  if (b.dataset.act === "ok") {
-    const next = cur.status === "ok" ? null : { theme: tid, status: "ok", note: "", at: Date.now() };
-    S.reviews[key] = next || undefined; if (!next) delete S.reviews[key];
-    rv.outerHTML = reviewHTML(key); writeReview(key, next); toast(next ? "Marked as right" : "Mark removed"); return;
-  }
-  if (cur.status === "flag" && !rv.querySelector(".note")) {
-    rv.insertAdjacentHTML("beforeend", noteForm(cur.note || "", true)); return;
-  }
-  if (!rv.querySelector(".note")) rv.insertAdjacentHTML("beforeend", noteForm(cur.note || "", false));
-  rv.querySelector("textarea").focus();
-}
-function noteForm(v, canClear) {
-  const id = "n" + Math.random().toString(36).slice(2, 8);
-  return `<div class="note"><label class="eyebrow" for="${id}">What needs checking?</label><textarea id="${id}" placeholder="e.g. wrong verse range, lens misses the point, check against al-Mizan">${esc(v)}</textarea>
-    <div class="row">${canClear ? `<button class="rb" data-act-clear data-save="clear">Remove flag</button>` : ""}<button class="rb" data-cancel>Cancel</button><button class="btn" data-save>Save flag</button></div></div>`;
-}
-function saveNote(b) {
-  const rv = b.closest(".rv"), key = rv.dataset.key, [tid] = key.split("~");
-  if (b.dataset.save === "clear") { delete S.reviews[key]; rv.outerHTML = reviewHTML(key); writeReview(key, null); toast("Flag removed"); return; }
-  const note = rv.querySelector("textarea").value.trim().slice(0, 2000);
-  const next = { theme: tid, status: "flag", note, at: Date.now() };
-  S.reviews[key] = next; rv.outerHTML = reviewHTML(key); writeReview(key, next); toast("Flag saved");
-}
-async function signOff(tid) {
-  if (!S.db) return;
-  const on = !(S.tstatus[tid] && S.tstatus[tid].status === "approved");
-  try {
-    if (on) { S.tstatus[tid] = { status: "approved", at: Date.now() }; await S.db.doc(`themeStatus/${tid}`).set(S.tstatus[tid]); toast("Theme signed off"); }
-    else { delete S.tstatus[tid]; await S.db.doc(`themeStatus/${tid}`).delete(); toast("Sign-off removed"); }
-  } catch (e) { toast("Couldn't save the sign-off. Try again."); }
-  remember(); render(S.cur.scroll);
-}
-function refreshReviewUI() {
-  const v = S.cur && S.cur.v;
-  if (v === "home") { const pb = $("#progbox"); if (pb) pb.outerHTML = progressHTML(); else { remember(); render(S.cur.scroll); } return; }
-  if (v === "flags") { remember(); render(S.cur.scroll); return; }
-  document.querySelectorAll(".rv").forEach(rv => { if (rv.querySelector(".note")) return; const fresh = reviewHTML(rv.dataset.key); if (rv.outerHTML !== fresh) rv.outerHTML = fresh; });
-}
-
-/* ---------- capabilities ---------- */
-async function initDb() {
-  try {
-    let tries = 0;
-    while (!window.claude && tries++ < 20) await new Promise(r => setTimeout(r, 150));
-    if (!window.claude || !window.claude.use) { S.dbState = "off"; return; }
-    const db = await window.claude.use("db");
-    if (!db) { S.dbState = "off"; return; }
-    S.db = db;
-    const user = await window.claude.use("user");
-    if (user && user.can) { try { const c = await user.can("data.write"); if (c === false) S.canWrite = false; } catch (e) {} }
-    S.dbState = "on";
-    let first = 0;
-    const done = () => { if (++first === 2) { remember(); render(S.cur.scroll); } };
-    db.collection("reviews").onSnapshot(snap => {
-      const m = {}; snap.docs.forEach(d => { const x = d.data(); if (x) m[d.id] = x; });
-      S.reviews = m; if (first < 2) done(); else refreshReviewUI();
-    }, () => {});
-    db.collection("themeStatus").onSnapshot(snap => {
-      const m = {}; snap.docs.forEach(d => { const x = d.data(); if (x) m[d.id] = x; });
-      S.tstatus = m; if (first < 2) done(); else refreshReviewUI();
-    }, () => {});
-  } catch (e) { S.dbState = "off"; }
 }
 
 /* ---------- settings ---------- */
@@ -848,22 +705,21 @@ $("#settings").addEventListener("close", () => { if (S.vcache[1] && S.vcache[1].
 async function boot() {
   loadPrefs();
   try {
-    const [th, su, rv] = await Promise.all([getJSON("data/themes.json"), getJSON("data/surahs.json"), getJSON("data/reviewed.json")]);
+    const [th, su, rv] = await Promise.all([getJSON("data/themes.json"), getJSON("data/surahs.json"), getJSON("data/notes.json")]);
     S.pillars = th.pillars; S.themes = th.themes; S.surahs = su; S.reviewed = rv;
     for (const t of S.themes) {
       S.byId[t.id] = t;
       t.subs.forEach((st, si) => st.p.forEach((p, pi) => p.r.forEach(([s, a, b]) => { for (let k = a; k <= b; k++) (S.verseIdx[`${s}:${k}`] ||= []).push({ tid: t.id, si, pi }); })));
     }
-  } catch (e) { $("#view").innerHTML = `<p class="empty">${esc(e.message)}. Reopen the page to try again.</p>`; return; }
+  } catch (e) { $("#view").innerHTML = `<div class="err"><p class="empty" style="padding:0">The themes couldn't load. Check your connection and try again.</p><button class="btn" onclick="location.reload()">Try again</button></div>`; return; }
   loadSeen();
   for (const t of S.themes) for (const r of t.anchors) S.votdList.push({ tid: t.id, r: [r[0], r[1]] });
   verses(1).then(v => { S.basmala = arText(v[0]); const b = $("#basmala"); if (b) b.textContent = S.basmala; }).catch(() => {});
   const h = (location.hash || "").slice(1);
   S.cur = S.byId[h] ? { v: "theme", id: h } : { v: "home" };
   render();
-  initDb();
 }
+window.addEventListener("hashchange", () => { const id = location.hash.slice(1); if (S.byId[id] && !(S.cur.v === "theme" && S.cur.id === id)) { remember(); go({ v: "theme", id }); } });
 boot();
 </script>
 
-</body></html>
